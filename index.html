@@ -1,71 +1,87 @@
-<!-----Salt Measuring App 1.3.3--->
+<!-----Salt Measuring App 7.1.1--->
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
-
 <html>
 <head>
-    <title>Salt Measurement App</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=XYg60FWPLw6Pu4ZWxk9Y74hLVO1EwvwWSVi3saGUTgjIB8vGeFh3yDGucDo0Xwd8IeZ0UfkgoSARYAZOsFBQ27eMxrIKUahDg-1DbeH9UT9PhhVEWcmQ1pPFbOnxHIqKqHjMtS5_w_zXwgg5mDi4dVXCCB3iYoPwlNBuqzTh4Z8shMD064qz5EEu9nEY2ZK3MXUbDRQoObHGAL9atnUx2oVYq_mEGH3YWkD9N1gO4BEUGJZcQtqXLiytlScF_R-ReNgtOdfIY0yOVFvyHY3Y3mWNXnujEEI9CRfs4_igkr8X30FKw-v6jnbIxXuI3j2wxOsZZkECbLTtAjW_9eTcVG3VRNDIMx2OjQTI-nV_4IeIf0VLhTORMEPTIZ3pO42D1EAERaMdqPhWmhuas3_kdQjYbkI1nvHniNc-k-ie0Y8md0jQYxmwzPpx241gfMYP8b9qeAn9afTAOcYaT7gUqlDj8e4peg4ifyxDJrFJ4yaaIiSIYUclkbJTfwWVJZDhWlKNVmQt6SSKRrBuO2dcIpAObv7dV5WxigkdkIrFZY-2dPZeJuyWCWO2YDbCJ6Ol0ghutRFelFNSigm9EABVXXrtv4qYLk1-563WF6UfoB2G1Yzv63pkREmpdVNk7bhSmTWZZVMesv2O4Ov9VkxZHmc1jm7TxHMI1Bfl1EBp09fr2TYq7_yoDmBpoPnX0sw_fOvRRSoyyl-dKiuMnDMijvZuRVtWtuUL72dt6L5TrS90X_9kx2M3EE3v2_DK_XyJvMtQD1RvGL8e1V1ySgEC0lolpe6uxLMokrYfFxin1IhBCzQ4aH8rjj_CEjjfwNsapCBf5w5KmYvSWDW4oYt8SsE7owDui7FP_xbotrvVY21LM2YYR0qktflek6GriM62FhmgZjkntrc9j7XDzxicAyRhU24jkD5aOFfV92Eb_Npht8aVVr63eDvPjhPHRSAq9w-g1AvhngRZ7hwor8f9vantoUPMkePfBJh2nGEyasxrFZJue8PNpD5GF0oXfCialrgapMIo2XinfCKVQbAuqdL2cZzHsXuvn_y73iZXmSYdlyswy5Wa979FUvdq3hhVMs5LLD5AfV_DkIZRMpHgaDphtu7EBtbFM0KS0f0JlCxDljAMSbtlWN6f0BNsxExAon2c35WhCdMLzHAv-53TuvbOU7qdy0KmMYRiK9RL2EXp_lWF8TNBYWegz5nX7B5dWPzTBd52rJiENjQV3d-sEpoC748QRXHrKNnzrhFqNvIBRbezGPbz9PLO86VLGn0IZLhqZcg8ietuazzIZltfWvj0EhgCvfQbZNMH4L1C0BP7DASkdZRxS165sOA1wsN-rWFJXks9j-TLjaTZ_LLmMpb8EAlJ-XfjB6hLaxNtP2dcQIZyrqC3IXqW3Wy--oHGdgJ6n6CbLVa5LudtILreZzwOD7Y2tEa_6c_r7oYAQU9rll3IwpCl6qBiu6eakjDyNGnDyrH1gfVBFqXnAon_YbuWIFPEbNTY1GYZg7N2F88yONbK2MwDRpsyL2S4SyuzxuAsqirKz-knXqqhgAhoCRFFTQ070JRgiZbPKPecBiqakUExteQVCq2nZlgKyOujHwW7nAdNqFqwof2jjJfOfvTXQxOuDmrnV2OJ8Zi7fEWXQbwOThHUUOdIE2OS1bAZ" nonce="da362ecb561c83921e367de2e82ee67e" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYWlsLWF0dGFjaG1lbnQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2F0dGFjaG1lbnQvdS8wLz91aT0yJmlrPTk5MDM5Yzk4NzAmYXR0aWQ9MC4xJnBlcm1tc2dpZD1tc2ctYTpyLTYyMjI0NzE2NTY3NjYzMjY0MDEmdGg9MTkxZTZmMjgyMGVlMzQ0ZCZ2aWV3PWF0dCZkaXNwPXNhZmUmcmVhbGF0dGlkPTE5MWU2ZjIyNGNlMjlkMGNiNDcxJnNhZGRiYXQ9QU5HamRKOXdFMW91Y0RIM1ZpTnZ2dkJXanFiLVlUbEl6NkFmd1FheHMxZ1ZVVkRJc3cxMEZza21IVjV5d3Mxak1uTFF4UGc5bXAwU0NYNTlzdkpwZTczLS1rSm5uOFlhUVN5SjdLM19xVl9fY2t3bjFFQjNMU05taWtrQTRuR2ZEY0RidHU0TUVNeGhzWlZMZUpFSWtFekFMY0IxM2I3TXhjZlYyZGx3aEhraDRMZmZDb2ZnSFZfSXFxNHBYX3dGbGhDcDAwZWpFUUZ1MTR4cmZOTVQyX2ptS3RZYXdWdE1PTFV0ME9mMWo5YTI1amppajVlUWRiNmlNUnpyMVBXSUZxUC1FSUVHb3VOb2FoX1k1OUdPSDR4NmhjUWtyNnUwdHhuaVJLQkY4b19CZjhnVE9lVGluVzU0cWp3ZjNLWXRVVjkybHJhUUpWd3F5RXlmTWMtcDlXQVNuSS1wbXhkWnp3UFA1OF9XMDVpTkJOZXJidzVFTjUxX05rN1JQZGpiX19KdlNCRjUtdlRxaVp6RV9sRmVGNkdxbng1S2xXYWktOE1zc2xjdm04bW1wMk5wQWw5TE1tWl9NTEJFV2pjS0haTGVpaktQZHRlWUtraDJZdzB0dkFqNjhMTnBFbzZLdDNaUHpOdF9pdWZJbDlUX0ZFbUtKRXl0WUFhMWlPeFVXYktUaFNjdGlBamlUQ2VfbHlFc2s0MUtkZ0ZVZ0lpMmdYOUlJLWxLUjFIYi1nSWdPLWlTWGNQMUJ0eUtnN1RSQkRFRFVpZXZkX25MU0hlTE9WdV94RWdfa2pKSTdRUDJtTE9Yb2J6dnBjUzVGVlByMWJXZVVLYk9DaTdSWEZLVzRqTVZVeFVBNlZpLXFGZTN5elVjdG1LN1N2eVN5MUZ2SlhYZGREMkNTN3FJTjN6ZXJsR0dRN0MycDFLdkQ2TkNiLXltdUNDa1NoTkJUdktBMUo3TFVONTZNb0FRZlBOZ1JwMTNPNEZwLWxwN0JkSGctendaV20yQl96NE5Wa3NBdWhoTEtLSFFUdzlMamZSTzBzZUEweF9LWnhiUFFRZThZUTZQX01nUHVlMWZPNmFnby0ySDYySkJsSU0xT3JabXdPVnlpcEVZVEFiQ1lTQUJ6VGFRckp5b2l0TjVWckNvVkxkUlBhWTc3QndPbmVFUEt1SFNBd1NFd1FfUmM2MHZmNFdyNEF5UmtZYVoyWi02NDlpVU1lUV9DbGxEUHZiODBKVkNScWdRTFNQUjJJSHVYbW0tOFJEM1VBb2h1eXc4MDZJUGQ3am1TeVh4YlFkdFdpQXpBTFJXc21MSmRFYzkzVDR1MThwdS1Ya0ZLVlR3b3FIVGx6OTRvSFNJd0JZ"/></head>
+  <title>Salt Measurement App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body>
-    <div class="container">
-        <h1>Salt Measurement App</h1>
-        <div class="input-container">
-            <label for="weight">
-                <img src="Fri_6_09_2024_19_54_47.png" alt="Weight Icon" class="icon"> ENTER WEIGHT OF FOOD (in grams):<br>NOTE: 1000g = 1kg
-            </label>
-            <input type="number" id="weight" placeholder="e.g., 500 grams">
-        </div>
-        <div class="input-container">
-            <label for="salt">
-                <img src="Fri_6_09_2024_19_54_47.png" alt="Salt Icon" class="icon"> AMOUNT OF SALT TO USE:
-            </label>
-            <input type="text" id="salt" readonly placeholder="Calculated salt amount will appear here">
-        </div>
-        <div class="input-container">
-            <label for="dietary-restrictions">Select Dietary Restrictions:</label>
-            <select id="dietary-restrictions">
-                <option value="normal">Normal</option>
-                <option value="low-sodium">Low Sodium</option>
-            </select>
-        </div>
-        <div class="button-container">
-            <button onclick="calculateSalt()">Calculate</button>
-            <button onclick="resetFields()">Reset</button>
-        </div>
-        <div class="image-container">
-            <img src="Fri_6_09_2024_19_54_47.png" alt="salt measuring app picture">
-        </div>
+  <div class="container">
+    <h1>Salt Measurement App</h1>
+    <div class="input-container">
+      <label for="weight">
+        ENTER WEIGHT OF FOOD (e.g., 500g, 1kg):
+      </label>
+      <input type="text" id="weight" placeholder="e.g., 500g, 1kg">
     </div>
-
-    <script>
-        function calculateSalt() {
-            let weight = document.getElementById("weight").value;
-            let dietaryRestrictions = document.getElementById("dietary-restrictions").value;
-            
-            if (weight && !isNaN(weight) && weight > 0) {
-                let salt = weight * 0.0125; // 1.25 ml of salt for every 100 grams
-                
-                if (dietaryRestrictions === "low-sodium") {
-                    salt *= 0.5; // Reduce salt amount by 50% for low-sodium diet
-                }
-                
-                document.getElementById("salt").value = salt.toFixed(2) + " ml (" + (salt * 0.202884) + " tsp)"; // 1 ml = 0.202884 tsp
-            } else {
-                alert("Please enter a valid weight.");
-            }
+    <div class="input-container">
+      <label for="salt">
+        AMOUNT OF SALT TO USE:
+      </label>
+      <input type="text" id="salt" readonly placeholder="Calculated salt amount will appear here">
+    </div>
+    <div class="input-container">
+      <label for="dietary-restrictions">Select Dietary Restrictions:</label>
+      <select id="dietary-restrictions">
+        <option value="normal">Normal</option>
+        <option value="low-sodium">Low Sodium</option>
+        <option value="very-low-sodium">Very Low Sodium</option>
+      </select>
+    </div>
+    <div class="button-container">
+      <button onclick="calculateSalt()">Calculate</button>
+      <button onclick="resetFields()">Reset</button>
+    </div>
+    <div class="image-container">
+      <img src="Fri_6_09_2024_19_54_47.png" alt="salt measuring app picture">
+    </div>
+    <div class="disclaimer">
+      <p>Disclaimer: Consult a dietitian for personalized advice.</p>
+      <p>Recommended daily salt intake: 5-6 grams (American Heart Association)</p>
+      <p>&copy; 2024 Wan Master Classes</p>
+    </div>
+  </div>
+  <script>
+    function calculateSalt() {
+      let weight = document.getElementById("weight").value.trim().toLowerCase();
+      let dietaryRestrictions = document.getElementById("dietary-restrictions").value;
+      
+      // Parse weight input (e.g., 500g, 1kg)
+      let weightValue = parseFloat(weight.replace(/[^0-9.]/g, ''));
+      let weightUnit = weight.replace(/^[0-9.]+/g, '').trim();
+      
+      // Convert weight to grams
+      if (weightUnit === 'kg') {
+        weightValue *= 1000;
+      }
+      
+      if (!isNaN(weightValue) && weightValue > 0) {
+        let salt = weightValue * 0.0125; // 1.25 ml of salt for every 100 grams
+        
+        // Apply dietary restrictions
+        if (dietaryRestrictions === "low-sodium") {
+          salt *= 0.5; // Reduce salt amount by 50% for low-sodium diet
+        } else if (dietaryRestrictions === "very-low-sodium") {
+          salt *= 0.25; // Reduce salt amount by 75% for very low-sodium diet
         }
-
-        function resetFields() {
-            document.getElementById("weight").value = '';
-            document.getElementById("salt").value = '';
-        }
-    </script>
-
+        
+        document.getElementById("salt").value = `${salt.toFixed(2)} ml (${(salt * 0.202884).toFixed(2)} tsp)`;
+      } else {
+        alert("Please enter a valid weight.");
+      }
+    }
+    
+    function resetFields() {
+      document.getElementById("weight").value = '';
+      document.getElementById("salt").value = '';
+    }
+  </script>
     <style>
+        /* CSS for improved layout and colors */
         body {
-            font-family: 'Open Sans', 'Inter', 'San Serif';
-            background-color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
         }
@@ -76,11 +92,11 @@
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgb(61, 64, 62);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: #3d403e;
+            color: #333333;
             text-align: center;
         }
 
@@ -92,7 +108,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 5px;
-            color: #3d403e;
+            color: #333333;
             font-weight: bold;
         }
 
@@ -117,7 +133,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #0077ff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -126,7 +142,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #005663;
         }
 
         .image-container {
@@ -140,7 +156,10 @@
             border-radius: 8px;
         }
 
+        .disclaimer {
+            text-align: center;
+            font-size: 12px;
+            color: #777777;
+            margin-top: 20px;
+        }
     </style>
- 
-</body>
-</html>
