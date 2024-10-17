@@ -1,25 +1,24 @@
 <!-----Salt Measuring App 6.1.1--->
 <meta name='viewport' content='width=device-width, initial-scale=1'/>
 <html>
-<head> 
-  <title>Salt Calculator App</title> 
-  <link rel="stylesheet" href="style.css">
+<head>
+  <title>Salt Measurement App</title>
+  
   <link href="style.css" rel="stylesheet">
 </head>
-  
 <body>
   <div class="container">
     <h1>Salt Measurement App</h1>
     <div class="input-container">
       <label for="weight">
-        <img src="Fri_6_09_2024_19_54_47.png" alt="Weight Icon" class="icon">
+        <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="Weight Icon" class="icon">
         ENTER WEIGHT OF FOOD (e.g., 500g, 1kg):
       </label>
       <input type="text" id="weight" placeholder="e.g., 500g, 1kg">
     </div>
     <div class="input-container">
       <label for="salt">
-        <img src="Fri_6_09_2024_19_54_47.png" alt="Salt Icon" class="icon">
+        <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="Salt Icon" class="icon">
         AMOUNT OF SALT TO USE:
       </label>
       <input type="text" id="salt" readonly placeholder="Calculated salt amount will appear here">
@@ -36,13 +35,22 @@
       <button onclick="calculateSalt()">Calculate</button>
       <button onclick="resetFields()">Reset</button>
     </div>
+    <!---Added Html----->
+    <div class="preloader-container">
+  <div class="preloader">
+    <div class="teaspoon percentage"></div>
+  </div>
+  <input type="text" id="teaspoonPercentage" readonly placeholder="Teaspoon %">
+</div>
+      <!---end Html-----></br></br>
+<b>See Above:: A visual representation of teaspoon % to use...</b>
     <div class="image-container">
-      <img src="Fri_6_09_2024_19_54_47.png" alt="salt measuring app picture">
+      <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="salt measuring app picture">
     </div>
     <div class="disclaimer">
-      <p>Disclaimer: Consult a dietitian for personalized advice.</p>
-      <p>For Daily Recommended salt intake: 5-6 grams (Consult a Dietitian)</p>
-      <p>&copy; 2024 Wan Master Classes</p>
+      <p>Disclaimer: Consult a Dietitian for personalized advice.</p>
+      <p>Recommended daily salt intake: (Consult a Dietitian)</p>
+      <p>&copy; 2024 Wan Master Classes, All Rights Reserved.</p>
     </div>
   </div>
   <script>
@@ -60,7 +68,7 @@
       }
       
       if (!isNaN(weightValue) && weightValue > 0) {
-        let salt = weightValue * 0.0125; // 1.25 ml of salt for every 100 grams
+        let salt = weightValue * 0.0125; // 0.00417 ml of salt for every 100 grams
         
         // Apply dietary restrictions
         if (dietaryRestrictions === "low-sodium") {
@@ -79,26 +87,73 @@
       document.getElementById("weight").value = '';
       document.getElementById("salt").value = '';
     }
+  //
+  function calculateSalt() {
+  let weight = document.getElementById("weight").value.trim().toLowerCase();
+  let dietaryRestrictions = document.getElementById("dietary-restrictions").value;
+  
+  // Parse weight input (e.g., 500g, 1kg)
+  let weightValue = parseFloat(weight.replace(/[^0-9.]/g, ''));
+  let weightUnit = weight.replace(/^[0-9.]+/g, '').trim();
+  
+  // Convert weight to grams
+  if (weightUnit === 'kg') {
+    weightValue *= 1000;
+  }
+  
+  if (!isNaN(weightValue) && weightValue > 0) {
+    let salt = weightValue * 0.00417; // 0.00417 ml of salt for every 100 grams
+    
+    // Apply dietary restrictions
+    if (dietaryRestrictions === "low-sodium") {
+      salt *= 0.5; // Reduce salt amount by 50% for low-sodium diet
+    } else if (dietaryRestrictions === "very-low-sodium") {
+      salt *= 0.25; // Reduce salt amount by 75% for very low-sodium diet
+    }
+    
+    document.getElementById("salt").value = `${salt.toFixed(2)} ml (${(salt * 0.202884).toFixed(2)} tsp)`;
+    
+    let teaspoonPercentage = (salt / 4.5) * 100; // Calculate percentage of teaspoon filled
+    document.getElementById("teaspoonPercentage").value = `${teaspoonPercentage.toFixed(2)}%`;
+    
+    displaySugarVisual(teaspoonPercentage); // Display visual representation of teaspoon percentage
+  } else {
+    alert("Please enter a valid weight.");
+  }
+}
+
+function displaySugarVisual(teaspoonPercentage) {
+  const teaspoon = document.querySelector('.teaspoon');
+  teaspoon.style.width = `${teaspoonPercentage}%`;
+}
+
+function resetFields() {
+  document.getElementById("weight").value = '';
+  document.getElementById("salt").value = '';
+  document.getElementById("teaspoonPercentage").value = '';
+  document.querySelector('.teaspoon').style.width = '0%';
+}
+  //
   </script>
     <style>
         body {
-            font-family: 'Helvetica', 'Arial', 'San Serif';
+            font-family: 'Arial', 'Helvetica', 'Sans Serif';
             background-color: #ffffff;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 500, auto;
+            max-width: 600px;
             margin: 50px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgb(61, 64, 62);
+           /* box-shadow: 0 2px 15px rgb(61, 64, 62);*/
         }
 
         h1 {
-            color: #3d403e;
+            color: #3333bb;
             text-align: center;
         }
 
@@ -157,7 +212,29 @@
             height: auto;
             border-radius: 8px;
         }
-    </style>
-      </html>
 
-    
+.preloader-container {
+  display: flex;
+  align-items: center;
+}
+
+.preloader {
+  width: 100px;
+  height: 4px;
+  background-color: #cccccc;
+  margin-right: 10px;
+}
+
+.teaspoon {
+  width: 0%;
+  height: 100%;
+  background-color: #ffcc00;
+}
+
+#teaspoonPercentage {
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+}
+    </style>
