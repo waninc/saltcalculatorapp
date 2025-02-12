@@ -1,240 +1,255 @@
-<!-----Salt Measuring App 6.1.1--->
-<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Salt Measurement App</title>
-  
-  <link href="style.css" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <h1>Salt Measurement App</h1>
-    <div class="input-container">
-      <label for="weight">
-        <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="Weight Icon" class="icon">
-        ENTER WEIGHT OF FOOD (e.g., 500g, 1kg):
-      </label>
-      <input type="text" id="weight" placeholder="e.g., 500g, 1kg">
-    </div>
-    <div class="input-container">
-      <label for="salt">
-        <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="Salt Icon" class="icon">
-        AMOUNT OF SALT TO USE:
-      </label>
-      <input type="text" id="salt" readonly placeholder="Calculated salt amount will appear here">
-    </div>
-    <div class="input-container">
-      <label for="dietary-restrictions">Select Dietary Restrictions:</label>
-      <select id="dietary-restrictions">
-        <option value="normal">Normal</option>
-        <option value="low-sodium">Low Sodium</option>
-        <option value="very-low-sodium">Very Low Sodium</option>
-      </select>
-    </div>
-    <div class="button-container">
-      <button onclick="calculateSalt()">Calculate</button>
-      <button onclick="resetFields()">Reset</button>
-    </div>
-    <!---Added Html----->
-    <div class="preloader-container">
-  <div class="preloader">
-    <div class="teaspoon percentage"></div>
-  </div>
-  <input type="text" id="teaspoonPercentage" readonly placeholder="Teaspoon %">
-</div>
-      <!---end Html-----></br></br>
-<b>See Above:: A visual representation of teaspoon % to use...</b>
-    <div class="image-container">
-      <img src="https://assets.onecompiler.app/42rnrs943/42rpbkj9a/Fri_6_09_2024_19_54_47.png" alt="salt measuring app picture">
-    </div>
-    <div class="disclaimer">
-      <p>Disclaimer: Consult a Dietitian for personalized advice.</p>
-      <p>Recommended daily salt intake: (Consult a Dietitian)</p>
-      <p>&copy; 2024 Wan Master Classes, All Rights Reserved.</p>
-    </div>
-  </div>
-  <script>
-    function calculateSalt() {
-      let weight = document.getElementById("weight").value.trim().toLowerCase();
-      let dietaryRestrictions = document.getElementById("dietary-restrictions").value;
-      
-      // Parse weight input (e.g., 500g, 1kg)
-      let weightValue = parseFloat(weight.replace(/[^0-9.]/g, ''));
-      let weightUnit = weight.replace(/^[0-9.]+/g, '').trim();
-      
-      // Convert weight to grams
-      if (weightUnit === 'kg') {
-        weightValue *= 1000;
-      }
-      
-      if (!isNaN(weightValue) && weightValue > 0) {
-        let salt = weightValue * 0.0125; // 0.00417 ml of salt for every 100 grams
-        
-        // Apply dietary restrictions
-        if (dietaryRestrictions === "low-sodium") {
-          salt *= 0.5; // Reduce salt amount by 50% for low-sodium diet
-        } else if (dietaryRestrictions === "very-low-sodium") {
-          salt *= 0.25; // Reduce salt amount by 75% for very low-sodium diet
-        }
-        
-        document.getElementById("salt").value = `${salt.toFixed(2)} ml (${(salt * 0.202884).toFixed(2)} tsp)`;
-      } else {
-        alert("Please enter a valid weight.");
-      }
-    }
-    
-    function resetFields() {
-      document.getElementById("weight").value = '';
-      document.getElementById("salt").value = '';
-    }
-  //
-  function calculateSalt() {
-  let weight = document.getElementById("weight").value.trim().toLowerCase();
-  let dietaryRestrictions = document.getElementById("dietary-restrictions").value;
-  
-  // Parse weight input (e.g., 500g, 1kg)
-  let weightValue = parseFloat(weight.replace(/[^0-9.]/g, ''));
-  let weightUnit = weight.replace(/^[0-9.]+/g, '').trim();
-  
-  // Convert weight to grams
-  if (weightUnit === 'kg') {
-    weightValue *= 1000;
-  }
-  
-  if (!isNaN(weightValue) && weightValue > 0) {
-    let salt = weightValue * 0.00417; // 0.00417 ml of salt for every 100 grams
-    
-    // Apply dietary restrictions
-    if (dietaryRestrictions === "low-sodium") {
-      salt *= 0.5; // Reduce salt amount by 50% for low-sodium diet
-    } else if (dietaryRestrictions === "very-low-sodium") {
-      salt *= 0.25; // Reduce salt amount by 75% for very low-sodium diet
-    }
-    
-    document.getElementById("salt").value = `${salt.toFixed(2)} ml (${(salt * 0.202884).toFixed(2)} tsp)`;
-    
-    let teaspoonPercentage = (salt / 4.5) * 100; // Calculate percentage of teaspoon filled
-    document.getElementById("teaspoonPercentage").value = `${teaspoonPercentage.toFixed(2)}%`;
-    
-    displaySugarVisual(teaspoonPercentage); // Display visual representation of teaspoon percentage
-  } else {
-    alert("Please enter a valid weight.");
-  }
-}
-
-function displaySugarVisual(teaspoonPercentage) {
-  const teaspoon = document.querySelector('.teaspoon');
-  teaspoon.style.width = `${teaspoonPercentage}%`;
-}
-
-function resetFields() {
-  document.getElementById("weight").value = '';
-  document.getElementById("salt").value = '';
-  document.getElementById("teaspoonPercentage").value = '';
-  document.querySelector('.teaspoon').style.width = '0%';
-}
-  //
-  </script>
+    <title>Salt Calculator App V2.1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
     <style>
         body {
-            font-family: 'Arial', 'Helvetica', 'Sans Serif';
-            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background: #f0f2f5;
+        }
+
+        .progress-container {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 5px;
+        }
+
+        .progress-bar {
+            height: 30px;
+            background: #f0f0f0;
+            margin-bottom: 5px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            transition: width 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .progress-text {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 14px;
         }
 
         .container {
             max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-           /* box-shadow: 0 2px 15px rgb(61, 64, 62);*/
+            margin: 220px auto 20px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: #3333bb;
+            color: #2c3e50;
             text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
         }
 
         .input-container {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-            color: #3d403e;
-            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+            margin-right: 12px;
         }
 
-        input {
+        label {
+            color: #34495e;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        input[type="text"]:read-only {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
         }
 
         .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        button:first-child {
+            background: #4CAF50;
+            color: white;
+        }
+
+        button:first-child:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+        }
+
+        button:last-child {
+            background: #e74c3c;
+            color: white;
+        }
+
+        button:last-child:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
         }
 
         .image-container {
             text-align: center;
-            margin-top: 30px;
+            margin: 25px 0;
         }
 
-        img {
-            max-width: 100%;
+        .image-container img {
+            max-width: 120px;
             height: auto;
-            border-radius: 8px;
+            opacity: 0.8;
         }
 
-.preloader-container {
-  display: flex;
-  align-items: center;
-}
-
-.preloader {
-  width: 100px;
-  height: 4px;
-  background-color: #cccccc;
-  margin-right: 10px;
-}
-
-.teaspoon {
-  width: 0%;
-  height: 100%;
-  background-color: #ffcc00;
-}
-
-#teaspoonPercentage {
-  width: 100px;
-  height: 30px;
-  font-size: 16px;
-  text-align: center;
-}
+        .disclaimer {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            color: #7f8c8d;
+            font-size: 12px;
+            line-height: 1.5;
+            border-left: 4px solid #4CAF50;
+        }
     </style>
+</head>
+<body>
+    <div class="progress-container"></div>
+    
+    <div class="container">
+        <h1>🧂 Salt Calculator App</h1>
+        <div class="input-container">
+            <label for="weight">
+                <img src="Fri_6_09_2024_19_54_47.png" alt="Weight Icon" class="icon">
+                ENTER FOOD WEIGHT (g/kg)
+            </label>
+            <input type="text" id="weight" placeholder="e.g., 500g or 1kg">
+        </div>
+        <div class="input-container">
+            <label for="salt">
+                <img src="Fri_6_09_2024_19_54_47.png" alt="Salt Icon" class="icon">
+                CALCULATED SALT AMOUNT
+            </label>
+            <input type="text" id="salt" readonly>
+        </div>
+        <div class="button-container">
+            <button onclick="calculateSalt()">Calculate</button>
+            <button onclick="resetFields()">Reset</button>
+        </div>
+        <div class="image-container">
+            <img src="Fri_6_09_2024_19_54_47.png" alt="Salt measurement illustration">
+        </div>
+        <div class="disclaimer">
+            <strong>Health Note:</strong> Recommended daily salt intake is 5 grams. Individual needs may vary - consult a nutritionist for personalized advice.
+        </div>
+    </div>
+
+    <script>
+        function calculateSalt() {
+            let weight = document.getElementById("weight").value;
+            if (validateInput(weight)) {
+                let salt = calculateSaltAmount(weight);
+                document.getElementById("salt").value = 
+                    `${salt.ml.toFixed(2)} ml | ${salt.tsp.toFixed(2)} tsp | ${salt.percent.toFixed(2)}%`;
+                addProgressBar(salt.percent, salt.tsp);
+            } else {
+                alert("Please enter valid weight (e.g., 500g or 1kg)");
+            }
+        }
+
+        function validateInput(weight) {
+            return /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i.test(weight);
+        }
+
+        function calculateSaltAmount(weight) {
+            let numericWeight = parseFloat(weight);
+            let unit = weight.toLowerCase().includes("kg") ? 1000 : 1;
+            numericWeight *= unit;
+            
+            const saltInGrams = numericWeight * 0.0125; // 1.25% ratio
+            const saltInMl = saltInGrams * 1.2;
+            const saltInTsp = saltInMl / 5;
+            const saltPercent = (saltInGrams / numericWeight) * 100;
+            
+            return { ml: saltInMl, tsp: saltInTsp, percent: saltPercent };
+        }
+
+        function addProgressBar(percent, tsp) {
+            const container = document.querySelector('.progress-container');
+            const bar = document.createElement('div');
+            bar.className = 'progress-bar';
+            
+            bar.innerHTML = `
+                <div class="progress-fill" style="width: ${percent}%">
+                    <div class="progress-text">
+                        ${percent.toFixed(1)}% (${tsp.toFixed(2)} tsp)
+                    </div>
+                </div>
+            `;
+            
+            container.insertBefore(bar, container.firstChild);
+            container.scrollTop = 0;
+        }
+
+        function resetFields() {
+            document.getElementById("weight").value = '';
+            document.getElementById("salt").value = '';
+            document.querySelector('.progress-container').innerHTML = '';
+        }
+    </script>
+</body>
+  </html>
+  
