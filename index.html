@@ -9,7 +9,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #cccccc;
+            background: #f0f2f5;
         }
 
         .progress-container {
@@ -162,7 +162,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: conic-gradient(#4CAF50 0% 25%, #eee 25% 100%);
+            background: conic-gradient(#4CAF50 0% 25%, #eeeeee 25% 100%);
             margin: 0 auto;
             position: relative;
         }
@@ -201,7 +201,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #cccccc;
             transition: .4s;
             border-radius: 34px;
         }
@@ -244,14 +244,14 @@
         <h1>Salt Calculator App</h1>
         <div class="input-container">
             <label for="weight">
-                <img src="salt.png" alt="Weight Icon" class="icon">
+                <img src="salt.png" class="icon">
                 ENTER FOOD WEIGHT (g/kg)
             </label>
             <input type="text" id="weight" placeholder="e.g., 500g or 1kg">
         </div>
         <div class="input-container">
             <label for="salt">
-                <img src="weight.png" alt="Salt Icon" class="icon">
+                <img src="weight.png" class="icon">
                 CALCULATED SALT AMOUNT
             </label>
             <input type="text" id="salt" readonly>
@@ -377,7 +377,7 @@
             const chartPercent = document.getElementById('chart-percent');
             const chartTsp = document.getElementById('chart-tsp');
             
-            chart.style.background = `conic-gradient(#4CAF50 0% ${percent}%, #eee ${percent}% 100%)`;
+            chart.style.background = `conic-gradient(#4CAF50 0% ${percent}%, #eeeeee ${percent}% 100%)`;
             chartPercent.textContent = `${percent.toFixed(1)}%`;
             chartTsp.textContent = `${tsp.toFixed(2)} tsp`;
         }
