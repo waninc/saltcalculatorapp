@@ -5,26 +5,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
     <style>
-        /* Green theme for salt */
-        .nav-tab.active { background: #C8E6C9; color: #1B5E20; }
-        button:first-child { background: #4CAF50; }
-        button:first-child:hover { background: #45a049; }
-        .progress-fill { background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); }
-        .disclaimer { border-left: 4px solid #4CAF50; }
-
-        /* Common styles */
-        .nav-tabs {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 8px 0;
-        }
-        /* ... Paste all common CSS from initial prompt here ... */
-
- /* Navigation Tabs */
+        /* Navigation Tabs */
         .nav-tabs {
             position: fixed;
             top: 0;
@@ -114,7 +95,7 @@
         }
 
         h1 {
-            color: #2c3e50;
+            color: #4CAF50;
             text-align: center;
             margin-bottom: 25px;
             font-size: 24px;
@@ -268,23 +249,47 @@
             line-height: 1.5;
             border-left: 4px solid #4CAF50;
         }
-
     </style>
 </head>
 <body>
+    <!-- Navigation Tabs -->
     <div class="nav-tabs">
-        <div class="nav-tab active">Salt Calculator</div>
-        <a href="features.html" class="nav-tab">Salt Features</a>
+        <div class="nav-tab active">Calculator</div>
+        <a href="features.html" class="nav-tab">Features</a>
     </div>
-    
-    <!-- Calculator content from original prompt -->
-    <!-- ... Paste salt calculator body content here ... -->
 
-<div class="progress-container"></div>
+    <div class="progress-container"></div>
+    
+    
+    <!-- Add this inside the container div -->
+<div class="container">
+    <div class="header-container">
+        <img src="Fri_6_09_2024_19_54_47.png" alt="App Logo" class="app-logo">
+    </div>
+    <!-- Rest of existing content -->
+</div>
+
+<style>
+    /* Add these styles to the existing CSS */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .app-logo {
+        width: 170px;
+        height: 170px;
+        margin-right: 10px;
+    }
+</style>
     
     <div class="container">
-        <h1>Salt Calculator</h1>
+        <h1>Salt Calculator App</h1>
         <div class="input-container">
+            
             <label for="weight">
                 ENTER FOOD WEIGHT (g/kg)
             </label>
