@@ -291,10 +291,49 @@
             <button onclick="resetFields()">Reset</button>
         </div>
 
-        <!-- Features Grid -->
+       <!-- Same features grid structure with sugar-specific content -->
         <div class="features-grid">
-            <!-- Feature Cards -->
-            <!-- ... Paste feature cards from previous code ... -->
+            <div class="feature-card">
+                <h3>Sugar Ratio Visualization</h3>
+                <div class="donut-chart">
+                    <div class="chart-center">
+                        <span id="chart-percent">0%</span>
+                        <div id="chart-tsp">0tsp</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Calculation History</h3>
+                <div class="history-list" id="historyList"></div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Unit Converter</h3>
+                <div class="unit-toggle">
+                    <span>Metric (g/kg)</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="unitToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span>Imperial (oz/lb)</span>
+                </div>
+                <div id="convertedUnits"></div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Health Recommendations</h3>
+                <div id="healthTips"></div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Sugar Adjustment</h3>
+                <label>Sugar Percentage:
+                    <input type="number" id="sugarPercent" value="5" step="0.5" min="1" max="25">
+                    %
+                </label>
+                <div id="adjustedValues"></div>
+            </div>
         </div>
 
         <!-- Disclaimer -->
@@ -303,8 +342,62 @@
         </div>
     </div>
 
-    <script>
-        // previous code ...
+   <script>
+        // Modified calculation logic for sugar
+        function calculateSugar() {
+            const weightInput = document.getElementById("weight").value;
+            const sugarPercentage = parseFloat(document.getElementById("sugarPercent").value);
+
+            if (validateInput(weightInput)) {
+                const sugarData = calculateSugarAmount(weightInput, sugarPercentage);
+                
+                document.getElementById("sugar").value = 
+                    `${sugarData.g.toFixed(2)}g | ${sugarData.tsp.toFixed(2)} tsp | ${sugarData.percent.toFixed(2)}%`;
+
+                updateChart(sugarData.percent, sugarData.tsp);
+                saveToHistory(sugarData);
+                updateConvertedUnits(sugarData);
+                showHealthTips(sugarData.g);
+            } else {
+                alert("Please enter valid weight (e.g., 500g or 1kg)");
+            }
+        }
+
+        function calculateSugarAmount(weight, percentage = 5) {
+            let numericWeight = parseFloat(weight);
+            const unit = weight.toLowerCase().includes("kg") ? 1000 : 1;
+            numericWeight *= unit;
+            
+            const sugarRatio = percentage / 100;
+            const sugarInGrams = numericWeight * sugarRatio;
+            const sugarInTsp = sugarInGrams / 4.2; // Standard teaspoon conversion
+            
+            return { 
+                g: sugarInGrams,
+                tsp: sugarInTsp,
+                percent: percentage,
+                weight: numericWeight
+            };
+        }
+
+        // Health tips modified for sugar
+        function showHealthTips(grams) {
+            const tips = document.getElementById('healthTips');
+            let message = "";
+            
+            if (grams > 25) {
+                message = "⚠️ Exceeds WHO daily limit (25g) - Consider reduction";
+            } else if (grams > 15) {
+                message = "⚠️ Approaching daily limit - Use moderation";
+            } else {
+                message = "👍 Within recommended daily sugar intake";
+            }
+            
+            tips.innerHTML = `<div class="tip">${message}</div>`;
+        }
+
+        // Keep other functions same as salt calculator
+        // ... Paste remaining JS functions from index.html here ...
     </script>
 </body>
 </html>
