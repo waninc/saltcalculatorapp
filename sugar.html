@@ -5,12 +5,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
     <style>
-               body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background: #f0f2f5;
         }
+
         /* Navigation Tabs */
         .nav-tabs {
             position: fixed;
@@ -51,15 +52,50 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-   
 
+        /* Toggle Switch */
+        .ingredient-toggle {
+            position: relative;
+            display: flex;
+            background: #E3F2FD;
+            border-radius: 30px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .ingredient-slider {
+            position: absolute;
+            height: 100%;
+            background: #2196F3;
+            border-radius: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+
+        .ingredient-type {
+            position: relative;
+            flex: 1;
+            padding: 12px 0;
+            text-align: center;
+            cursor: pointer;
+            color: #2196F3;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            z-index: 1;
+            background: transparent;
+            border: none;
+        }
+
+        .ingredient-type.active {
+            color: white;
+        }
 
         /* Input Styles */
         .input-container {
             margin-bottom: 20px;
         }
 
-        input[type="text"], select {
+        input[type="text"], select, input[type="number"] {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -92,55 +128,30 @@
             background: #1976D2;
         }
 
-        /* Additional Styles */
-        .ingredient-toggle {
-            margin: 15px 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .ingredient-type {
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            background: #E3F2FD;
-            transition: all 0.3s ease;
-        }
-
-        .ingredient-type.active {
-            background: #2196F3;
-            color: white;
-        }
-
+        /* Results Section */
         .sweetener-table {
-            margin-top: 10px;
+            margin-top: 20px;
             border-collapse: collapse;
             width: 100%;
         }
 
         .sweetener-table td {
-            padding: 8px;
+            padding: 12px;
             border-bottom: 1px solid #ddd;
         }
 
         .progress-container {
-            position: absolute;
-            top: 60px;
-            left: 5px;
-            right: 5px;
-            max-height: 200px;
-            overflow-y: auto;
+            margin: 20px 0;
             background: white;
             border-radius: 8px;
+            padding: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 999;
-            padding: 5px;
         }
 
         .progress-bar {
             height: 30px;
             background: #f0f0f0;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             border-radius: 15px;
             position: relative;
             overflow: hidden;
@@ -150,6 +161,15 @@
             height: 100%;
             background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
             transition: width 0.5s ease-in-out;
+        }
+
+        .disclaimer {
+            margin-top: 25px;
+            padding: 15px;
+            background: #FFF3E0;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #666;
         }
     </style>
 </head>
@@ -163,12 +183,14 @@
     </div>
 
     <div class="container">
-        <!-- Input Section -->
-        <div class="ingredient-toggle">
-            <div class="ingredient-type active" onclick="toggleIngredientType('solid')">Solid Ingredients</div>
-            <div class="ingredient-type" onclick="toggleIngredientType('liquid')">Beverages</div>
+        <!-- Toggle Switch -->
+        <div class="ingredient-toggle" id="ingredientToggle">
+            <div class="ingredient-slider" id="ingredientSlider"></div>
+            <button class="ingredient-type active" onclick="toggleIngredientType('solid')">Solid Ingredients</button>
+            <button class="ingredient-type" onclick="toggleIngredientType('liquid')">Beverages</button>
         </div>
 
+        <!-- Input Section -->
         <div class="input-container">
             <label id="weightLabel" for="weight">ENTER INGREDIENT WEIGHT (g/kg)</label>
             <input type="text" id="weight" placeholder="e.g., 500g or 1kg">
@@ -207,7 +229,9 @@
             <button onclick="resetFields()">Reset</button>
         </div>
 
-        <!-- Features Grid -->
+        <!-- Results Section -->
+        <div class="progress-container" id="progressContainer"></div>
+
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Natural Sweetener Equivalents</h3>
@@ -223,19 +247,19 @@
 
     <script>
         // State Management
-        let currentIngredientType = 'solid'; // 'solid' or 'liquid'
-        let currentUnit = 'metric'; // 'metric' or 'imperial'
-        
-        // Sweetener Conversion Ratios (grams needed per 1g sugar)
+        let currentIngredientType = 'solid';
+        let currentUnit = 'metric';
+
+        // Sweetener Conversion Ratios
         const sweetenerRatios = {
-            'Stevia': 0.005,    // 200x sweeter
-            'Monk Fruit': 0.00625, // 160x sweeter
-            'Erythritol': 0.769, // 1.3x less sweet
-            'Honey': 1.333,     // 0.75x sweet
-            'Syrup': 1.492 // 0.67x sweet
+            'Stevia': 0.005,
+            'Monk Fruit': 0.00625,
+            'Erythritol': 0.769,
+            'Honey': 1.333,
+            'Syrup': 1.492
         };
 
-        // Core Calculation Function
+        // Calculation Functions
         function calculateSugar() {
             const weightInput = document.getElementById("weight").value;
             const sugarPercentage = parseFloat(document.getElementById("sugarPercent").value);
@@ -253,68 +277,48 @@
         function validateInput(weight) {
             const pattern = currentIngredientType === 'liquid' 
                 ? /^[0-9]+(\.[0-9]+)?\s*(ml|l)$/i 
-                : currentUnit === 'metric' 
-                    ? /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i 
-                    : /^[0-9]+(\.[0-9]+)?\s*(oz|lb)$/i;
+                : /^[0-9]+(\.[0-9]+)?\s*(g|kg|oz|lb)$/i;
             return pattern.test(weight);
         }
 
         function calculateSugarAmount(input, percentage, gramsPerTsp, scale) {
-            // Parse input value
             const numericValue = parseFloat(input);
             const unit = input.toLowerCase().match(/[a-z]+$/)[0];
             
-            // Convert to grams
-            let grams;
+            let grams = numericValue;
             if (currentIngredientType === 'liquid') {
-                // Convert liters to milliliters
                 grams = unit === 'l' ? numericValue * 1000 : numericValue;
-            } else if (currentUnit === 'imperial') {
-                // Convert imperial to grams
-                grams = unit === 'lb' ? numericValue * 453.592 : numericValue * 28.3495;
-            } else {
-                // Convert metric to grams
-                grams = unit === 'kg' ? numericValue * 1000 : numericValue;
+            } else if (unit === 'kg') {
+                grams = numericValue * 1000;
+            } else if (unit === 'lb') {
+                grams = numericValue * 453.592;
+            } else if (unit === 'oz') {
+                grams = numericValue * 28.3495;
             }
 
-            // Calculate sugar amounts
             const sugarGrams = (grams * (percentage / 100)) * scale;
             const tsp = sugarGrams / gramsPerTsp;
-            const cups = sugarGrams / (gramsPerTsp === 4.8 ? 220 : 200); // Different cup weights
+            const cups = sugarGrams / (gramsPerTsp === 4.8 ? 220 : 200);
 
-            return {
-                grams: sugarGrams,
-                tsp: tsp,
-                cups: cups,
-                percentage: percentage,
-                scaled: scale
-            };
+            return { grams: sugarGrams, tsp: tsp, cups: cups, percentage: percentage };
         }
 
-        // UI Update Functions
+        // UI Functions
         function updateUI(data) {
-            // Update main output
             document.getElementById("sugar").value = 
                 `${data.grams.toFixed(2)}g | ${data.tsp.toFixed(2)} tsp | ${data.cups.toFixed(2)} cups`;
-
-            // Update sweetener equivalents
+            
             updateSweetenerTable(data.grams);
-            
-            // Update progress bars
             addProgressBar(data.percentage, data.tsp);
-            
-            // Update health tips
-            showHealthTips(data.grams);
         }
 
         function updateSweetenerTable(sugarGrams) {
             let tableHTML = '';
             for (const [sweetener, ratio] of Object.entries(sweetenerRatios)) {
-                const equivalent = sugarGrams * ratio;
                 tableHTML += `
                     <tr>
                         <td>${sweetener}</td>
-                        <td>${equivalent.toFixed(2)}g</td>
+                        <td>${(sugarGrams * ratio).toFixed(2)}g</td>
                     </tr>
                 `;
             }
@@ -322,71 +326,53 @@
         }
 
         function addProgressBar(percent, tsp) {
-            const container = document.querySelector('.progress-container');
+            const container = document.getElementById('progressContainer');
             const bar = document.createElement('div');
             bar.className = 'progress-bar';
             bar.innerHTML = `
                 <div class="progress-fill" style="width: ${percent}%">
-                    <div class="progress-text">
-                        ${percent.toFixed(1)}% (${tsp.toFixed(2)} tsp)
-                    </div>
+                    <div class="progress-text">${percent.toFixed(1)}% (${tsp.toFixed(2)} tsp)</div>
                 </div>
             `;
             container.prepend(bar);
         }
 
-        function showHealthTips(grams) {
-            const tips = document.getElementById('healthTips');
-            let message = grams > 25 ? "⚠️ Exceeds daily limit!" :
-                         grams > 15 ? "⚠️ Approaching limit" : "👍 Within recommendation";
-            if (tips) tips.innerHTML = `<div class="tip">${message}</div>`;
-        }
-
-        // Event Handlers
+        // Toggle Functions
         function toggleIngredientType(type) {
             currentIngredientType = type;
-            document.querySelectorAll('.ingredient-type').forEach(el => 
-                el.classList.remove('active'));
+            const buttons = document.querySelectorAll('.ingredient-type');
+            const slider = document.getElementById('ingredientSlider');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Update labels and placeholders
+            const activeIndex = Array.from(buttons).indexOf(event.target);
+            slider.style.transform = `translateX(${activeIndex * 100}%)`;
+            
+            // Update input labels
             const label = document.getElementById('weightLabel');
             const input = document.getElementById('weight');
-            
             if (type === 'liquid') {
                 label.textContent = 'ENTER LIQUID VOLUME (ml/l)';
                 input.placeholder = 'e.g., 500ml or 2l';
             } else {
-                label.textContent = currentUnit === 'metric' 
-                    ? 'ENTER INGREDIENT WEIGHT (g/kg)' 
-                    : 'ENTER WEIGHT (oz/lb)';
-                input.placeholder = currentUnit === 'metric' 
-                    ? 'e.g., 500g or 1kg' 
-                    : 'e.g., 16oz or 2lb';
+                label.textContent = 'ENTER INGREDIENT WEIGHT (g/kg)';
+                input.placeholder = 'e.g., 500g or 1kg';
             }
         }
 
         function resetFields() {
-            // Clear inputs
             document.getElementById("weight").value = '';
             document.getElementById("sugar").value = '';
-            
-            // Clear visual elements
-            document.querySelector('.progress-container').innerHTML = "";
+            document.getElementById('progressContainer').innerHTML = "";
             document.getElementById('sweetenerTable').innerHTML = "";
         }
 
-        // Unit Toggle Event Listener
-        document.getElementById('unitToggle').addEventListener('change', function() {
-            currentUnit = this.checked ? 'imperial' : 'metric';
-            const input = document.getElementById('weight');
-            
-            if (currentIngredientType === 'solid') {
-                input.placeholder = currentUnit === 'metric' 
-                    ? 'e.g., 500g or 1kg' 
-                    : 'e.g., 16oz or 2lb';
-            }
+        // Initialize slider
+        window.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('ingredientSlider');
+            slider.style.width = '50%';
         });
     </script>
 </body>
-</html>
+    </html>
