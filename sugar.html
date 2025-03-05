@@ -171,6 +171,60 @@
             font-size: 0.9em;
             color: #666;
         }
+    
+    /* Add to your existing CSS */
+.unit-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+    
     </style>
 </head>
 <body>
@@ -189,6 +243,16 @@
             <button class="ingredient-type active" onclick="toggleIngredientType('solid')">Solid Ingredients</button>
             <button class="ingredient-type" onclick="toggleIngredientType('liquid')">Beverages</button>
         </div>
+        
+        <!-- Add this right after the slide toggles section -->
+<div class="unit-toggle">
+    <span>Metric</span>
+    <label class="switch">
+        <input type="checkbox" id="unitToggle">
+        <span class="slider"></span>
+    </label>
+    <span>Imperial</span>
+</div>
 
         <!-- Input Section -->
         <div class="input-container">
@@ -349,6 +413,35 @@
             const activeIndex = Array.from(buttons).indexOf(event.target);
             slider.style.transform = `translateX(${activeIndex * 100}%)`;
             
+            // Add this event listener at the bottom of your script
+document.getElementById('unitToggle').addEventListener('change', function() {
+    currentUnit = this.checked ? 'imperial' : 'metric';
+    const input = document.getElementById('weight');
+    //end
+    
+    if (currentIngredientType === 'solid') {
+        input.placeholder = currentUnit === 'metric' 
+            ? 'e.g., 500g or 1kg' 
+            : 'e.g., 16oz or 2lb';
+    }
+});
+
+// Update your validateInput function to:
+function validateInput(weight) {
+    const pattern = currentIngredientType === 'liquid' 
+        ? /^[0-9]+(\.[0-9]+)?\s*(ml|l)$/i 
+        : currentUnit === 'metric' 
+            ? /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i 
+            : /^[0-9]+(\.[0-9]+)?\s*(oz|lb)$/i;
+    return pattern.test(weight);
+}
+
+// Update your calculateSugarAmount function's unit conversion:
+if (currentUnit === 'imperial' && currentIngredientType === 'solid') {
+    // Convert imperial to grams
+    grams = unit === 'lb' ? numericValue * 453.592 : numericValue * 28.3495;
+}
+            
             // Update input labels
             const label = document.getElementById('weightLabel');
             const input = document.getElementById('weight');
@@ -375,4 +468,4 @@
         });
     </script>
 </body>
-    </html>
+            </html>
