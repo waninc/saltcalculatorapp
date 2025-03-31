@@ -4,29 +4,21 @@
     <title>Salt Calculator App V4.10</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-
     <style>
-        /* Green theme for salt */
-        .nav-tab.active { background: #C8E6C9; color: #1B5E20; }
-        button:first-child { background: #4CAF50; }
-        button:first-child:hover { background: #45a049; }
-        .progress-fill { background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); }
-        .disclaimer { border-left: 4px solid #4CAF50; }
-
-        /* Common styles */
-        .nav-tabs {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 8px 0;
+        /* Combined and optimized CSS */
+        :root {
+            --primary-color: #4CAF50;
+            --primary-dark: #45a049;
+            --light-bg: #f0f2f5;
         }
 
-        /* ... Paste all common CSS from initial prompt here ... */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light-bg);
+        }
 
-        /* Navigation Tabs */
         .nav-tabs {
             position: fixed;
             top: 0;
@@ -53,16 +45,8 @@
         }
 
         .nav-tab:not(.active):hover {
-            background: #45a049;
+            background: var(--primary-dark);
             color: white;
-        }
-
-        /* Calculator Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f0f2f5;
         }
 
         .progress-container {
@@ -90,20 +74,9 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             transition: width 0.5s ease-in-out;
             position: relative;
-        }
-
-        .progress-text {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            font-size: 14px;
         }
 
         .container {
@@ -113,13 +86,6 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 24px;
         }
 
         .input-container {
@@ -133,17 +99,6 @@
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-
-        input[type="text"]:read-only {
-            background-color: #f8f9fa;
-            cursor: not-allowed;
         }
 
         .button-container {
@@ -163,21 +118,13 @@
         }
 
         button:first-child {
-            background: #4CAF50;
+            background: var(--primary-color);
             color: white;
-        }
-
-        button:first-child:hover {
-            background: #45a049;
         }
 
         button:last-child {
             background: #e74c3c;
             color: white;
-        }
-
-        button:last-child:hover {
-            background: #c0392b;
         }
 
         .features-grid {
@@ -202,14 +149,6 @@
             position: relative;
         }
 
-        .chart-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
         .history-list {
             max-height: 200px;
             overflow-y: auto;
@@ -229,38 +168,6 @@
             height: 24px;
         }
 
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .toggle-slider {
-            background-color: #4CAF50;
-        }
-
-        input:checked + .toggle-slider:before {
-            transform: translateX(26px);
-        }
-
         .disclaimer {
             background: #f8f9fa;
             padding: 15px;
@@ -268,22 +175,9 @@
             color: #7f8c8d;
             font-size: 12px;
             line-height: 1.5;
-            border-left: 4px solid #4CAF50;
+            border-left: 4px solid var(--primary-color);
         }
     </style>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5361019421420704"
-     crossorigin="anonymous"></script>
-
-  <a href="https://www.iubenda.com/privacy-policy/29975243" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-
-<a href="https://www.iubenda.com/privacy-policy/29975243/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-
-<meta name="description" content="Wan Records - Precision salt and sugar calculators for health-conscious individuals. Calculate, track, and optimize your daily intake with advanced features and real-time recommendations.">
-<meta name="keywords" content="salt calculator, sugar calculator, health tracking, nutrition, Wan Records, food preservation, recipe optimization">
-<meta name="author" content="Wan Records">
-<meta name="robots" content="index, follow"> <!-- Allow search engines to index the site -->
-    
 </head>
 <body>
     <div class="nav-tabs">
@@ -293,29 +187,21 @@
         <a href="sugar-features.html" class="nav-tab">Sugar Features</a>
     </div>
     
-    <!-- Calculator content from original prompt -->
-    <!-- ... Paste salt calculator body content here ... -->
-<div class="progress-container"></div>
-    
+    <div class="progress-container"></div>
     <div class="container">
         <h1>Salt Calculator App</h1>
         <div class="input-container">
-            <label for="weight">
-                ENTER FOOD WEIGHT (g/kg)
-            </label>
+            <label>ENTER FOOD WEIGHT</label>
             <input type="text" id="weight" placeholder="e.g., 500g or 1kg">
         </div>
         <div class="input-container">
-            <label for="salt">
-                CALCULATED SALT AMOUNT
-            </label>
+            <label>CALCULATED SALT AMOUNT</label>
             <input type="text" id="salt" readonly>
         </div>
         <div class="button-container">
             <button onclick="calculateSalt()">Calculate</button>
             <button onclick="resetFields()">Reset</button>
         </div>
-
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Salt Ratio Visualization</h3>
@@ -326,85 +212,101 @@
                     </div>
                 </div>
             </div>
-
             <div class="feature-card">
                 <h3>Calculation History</h3>
                 <div class="history-list" id="historyList"></div>
             </div>
-
             <div class="feature-card">
                 <h3>Unit Converter</h3>
                 <div class="unit-toggle">
                     <span>Metric (g/kg)</span>
                     <label class="toggle-switch">
                         <input type="checkbox" id="unitToggle">
-                        <span class="toggle-slider"></span>
+                        <span class="slider round"></span>
                     </label>
                     <span>Imperial (oz/lb)</span>
                 </div>
                 <div id="convertedUnits"></div>
             </div>
-
             <div class="feature-card">
                 <h3>Health Recommendations</h3>
                 <div id="healthTips"></div>
             </div>
-
             <div class="feature-card">
                 <h3>Salt Adjustment</h3>
-                <label>Salt Percentage:
+                <label>
+                    Salt Percentage:
                     <input type="number" id="saltPercent" value="0.53" step="0.1" min="0.1" max="5">
                     %
                 </label>
-                <div id="adjustedValues"></div>
+                <div id="adjustedValues">Using 0.53% of food weight for calculations</div>
             </div>
         </div>
-
         <div class="disclaimer">
             <strong>Health Note:</strong> Recommended daily salt intake is 5 grams. Individual needs may vary - consult a nutritionist for personalized advice.<br>© 2025 WAN RECORDS.<br>info@saltcalculator.co.uk
         </div>
     </div>
-
     <script>
+        // Initialize adjusted values display
+        document.getElementById('adjustedValues').textContent = 
+            `Using ${document.getElementById('saltPercent').value}% of food weight for calculations`;
+
         function calculateSalt() {
-            const weightInput = document.getElementById("weight").value;
+            const weightInput = document.getElementById("weight").value.trim();
             const saltPercentage = parseFloat(document.getElementById("saltPercent").value);
-
-            if (validateInput(weightInput)) {
-                const saltData = calculateSaltAmount(weightInput, saltPercentage);
-                
-                document.getElementById("salt").value = 
-                    `${saltData.ml.toFixed(2)} ml | ${saltData.tsp.toFixed(2)} tsp | ${saltData.percent.toFixed(2)}%`;
-
-                updateChart(saltData.percent, saltData.tsp);
-                saveToHistory(saltData);
-                updateConvertedUnits(saltData);
-                showHealthTips(saltData.percent);
-                addProgressBar(saltData.percent, saltData.tsp);
-            } else {
-                alert("Please enter valid weight (e.g., 500g or 1kg)");
+            
+            if (!validateInput(weightInput)) {
+                alert("Invalid input format. Use:\n- Metric: 500g or 1kg\n- Imperial: 16oz or 2lb");
+                return;
             }
+
+            const saltData = calculateSaltAmount(weightInput, saltPercentage);
+            
+            document.getElementById("salt").value = 
+                `${saltData.ml.toFixed(2)} ml | ${saltData.tsp.toFixed(2)} tsp | ${saltData.percent.toFixed(2)}%`;
+            
+            updateChart(saltData.percent, saltData.tsp);
+            saveToHistory(saltData);
+            updateConvertedUnits(saltData);
+            showHealthTips(saltData.percent);
+            addProgressBar(saltData.percent, saltData.tsp);
         }
 
         function validateInput(weight) {
-            return /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i.test(weight);
+            const isMetric = !document.getElementById('unitToggle').checked;
+            const pattern = isMetric 
+                ? /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i 
+                : /^[0-9]+(\.[0-9]+)?\s*(oz|lb)$/i;
+            return pattern.test(weight);
         }
 
-        function calculateSaltAmount(weight, percentage = 0.5) {
+        function calculateSaltAmount(weight, percentage) {
+            const isMetric = !document.getElementById('unitToggle').checked;
             let numericWeight = parseFloat(weight);
-            const unit = weight.toLowerCase().includes("kg") ? 1000 : 1;
-            numericWeight *= unit;
+            const unit = weight.toLowerCase();
             
+            // Convert to grams
+            if (!isMetric) {
+                if (unit.includes('lb')) {
+                    numericWeight *= 453.592; // 1 lb = 453.592g
+                } else if (unit.includes('oz')) {
+                    numericWeight *= 28.3495; // 1 oz = 28.3495g
+                }
+            } else {
+                if (unit.includes('kg')) {
+                    numericWeight *= 1000;
+                }
+            }
+
             const saltRatio = percentage / 100;
             const saltInGrams = numericWeight * saltRatio;
             const saltInMl = saltInGrams * 1.2;
             const saltInTsp = saltInMl / 5;
-            const saltPercent = (saltInGrams / numericWeight) * 100;
             
             return { 
                 ml: saltInMl, 
                 tsp: saltInTsp, 
-                percent: saltPercent,
+                percent: (saltInGrams / numericWeight) * 100,
                 weight: numericWeight,
                 grams: saltInGrams 
             };
@@ -414,7 +316,6 @@
             const container = document.querySelector('.progress-container');
             const bar = document.createElement('div');
             bar.className = 'progress-bar';
-            
             bar.innerHTML = `
                 <div class="progress-fill" style="width: ${percent}%">
                     <div class="progress-text">
@@ -422,7 +323,6 @@
                     </div>
                 </div>
             `;
-            
             container.insertBefore(bar, container.firstChild);
             container.scrollTop = 0;
         }
@@ -432,7 +332,11 @@
             const chartPercent = document.getElementById('chart-percent');
             const chartTsp = document.getElementById('chart-tsp');
             
-            chart.style.background = `conic-gradient(#4CAF50 0% ${percent}%, #eee ${percent}% 100%)`;
+            chart.style.background = `conic-gradient(
+                var(--primary-color) 0% ${percent}%,
+                #eee ${percent}% 100%
+            )`;
+            
             chartPercent.textContent = `${percent.toFixed(1)}%`;
             chartTsp.textContent = `${tsp.toFixed(2)} tsp`;
         }
@@ -441,10 +345,15 @@
             const historyList = document.getElementById('historyList');
             const entry = document.createElement('div');
             entry.className = 'history-entry';
+            
             entry.innerHTML = `
                 <strong>${new Date().toLocaleTimeString()}:</strong>
-                ${data.weight}g → ${data.tsp.toFixed(2)} tsp
+                ${data.weight.toFixed(2)}g → ${data.tsp.toFixed(2)} tsp
             `;
+            
+            if (historyList.children.length >= 5) {
+                historyList.lastChild.remove();
+            }
             historyList.prepend(entry);
         }
 
@@ -465,8 +374,8 @@
 
         document.getElementById('unitToggle').addEventListener('change', function() {
             const isMetric = !this.checked;
-            document.getElementById('weight').placeholder = isMetric ? 
-                "e.g., 500g or 1kg" : "e.g., 16oz or 2lb";
+            const placeholder = isMetric ? "e.g., 500g or 1kg" : "e.g., 16oz or 2lb";
+            document.getElementById('weight').placeholder = placeholder;
         });
 
         document.getElementById('saltPercent').addEventListener('input', function() {
@@ -481,6 +390,8 @@
             document.getElementById('historyList').innerHTML = '';
             document.getElementById('chart-percent').textContent = '0%';
             document.getElementById('chart-tsp').textContent = '0tsp';
+            document.getElementById('healthTips').innerHTML = '';
+            document.getElementById('convertedUnits').innerHTML = '';
         }
     </script>
 </body>
