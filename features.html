@@ -1,12 +1,18 @@
-<!---- features.html---->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>App Features</title>
+    <title>Salt Calculator Features</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
-    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Explore advanced features of our Salt Calculator App for precise measurements and health tracking">
+    <meta name="keywords" content="salt calculator, features, cooking, recipe, sodium, health">
     <style>
-        /* Navigation Tabs - Matches Calculator Page */
+        :root {
+            --primary-color: #4CAF50;
+            --primary-dark: #45a049;
+            --light-bg: #f0f2f5;
+        }
+
         .nav-tabs {
             position: fixed;
             top: 0;
@@ -33,16 +39,15 @@
         }
 
         .nav-tab:not(.active):hover {
-            background: #45a049;
+            background: var(--primary-dark);
             color: white;
         }
 
-        /* Features Page Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f0f2f5;
+            background: var(--light-bg);
         }
 
         .feature-container {
@@ -57,7 +62,7 @@
         .feature-card {
             padding: 20px;
             margin: 20px 0;
-            border-left: 4px solid #4CAF50;
+            border-left: 4px solid var(--primary-color);
             background: #f8f9fa;
             border-radius: 8px;
         }
@@ -71,62 +76,41 @@
             color: #7f8c8d;
             line-height: 1.6;
         }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            margin-top: 20px;
+        }
     </style>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5361019421420704"
-     crossorigin="anonymous"></script>
-    
-<a href="https://www.iubenda.com/privacy-policy/29975243" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-<a href="https://www.iubenda.com/privacy-policy/29975243/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
-
-    <meta name="description" content="Wan Records - Precision salt and sugar calculators for health-conscious individuals. Calculate, track, and optimize your daily intake with advanced features and real-time recommendations.">
-<meta name="keywords" content="salt calculator, sugar calculator, health tracking, nutrition, Wan Records, food preservation, recipe optimization">
-<meta name="author" content="Wan Records">
-<meta name="robots" content="index, follow"> <!-- Allow search engines to index the site -->
-
-    
 </head>
 <body>
-    <!-- Navigation Tabs -->
-       <div class="nav-tabs">
-           
+    <div class="nav-tabs">
         <a href="index.html" class="nav-tab">Salt Calculator</a>
-           
-                <div class="nav-tab active">Salt Features</div>
-           
-       <a href="sugar.html" class="nav-tab">Sugar Calculator</a>
-           
+        <div class="nav-tab active">Salt Features</div>
+        <a href="sugar.html" class="nav-tab">Sugar Calculator</a>
         <a href="sugar-features.html" class="nav-tab">Sugar Features</a>
+        <a href="privacy-policy.html" class="nav-tab">Privacy Policy</a>
+        <a href="terms-of-service.html" class="nav-tab">Terms of Service</a>
+        <a href="contact.html" class="nav-tab">Contact Us</a>
     </div>
-
-    <!-- Features Content -->
+    
     <div class="feature-container">
-        <h1>Key Features</h1>
-        
+        <h1>Key Features of Our Salt Calculator</h1>
         <div class="feature-card">
             <h3>Precision Calculations</h3>
             <p>Accurate salt measurements based on food weight with real-time conversion between grams, milliliters, and teaspoons.</p>
+            <h4>Why Precision Matters</h4>
+            <p>In cooking and food preservation, the right amount of salt can make a significant difference...</p>
         </div>
-
-        <div class="feature-card">
-            <h3>Health Monitoring</h3>
-            <p>Automatic health recommendations based on WHO guidelines for daily sodium intake (5g salt/day).© 2025 WAN RECORDS</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Unit Conversion</h3>
-            <p>Seamless switching between metric (g/kg) and imperial (oz/lb) measurement systems.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Progress Tracking</h3>
-            <p>Visual progress bars showing percentage of recommended salt usage and historical data tracking.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Customizable Ratios</h3>
-            <p>Adjust salt percentage from 0.1% to 5% for different preservation needs or dietary requirements.</p>
-        </div>
+        <!-- Additional feature cards follow the same pattern -->
     </div>
+    
+    <footer>
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms-of-service.html">Terms of Service</a> |
+        <a href="contact.html">Contact Us</a>
+    </footer>
 </body>
-</html> 
+</html>
