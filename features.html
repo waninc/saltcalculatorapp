@@ -1,116 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Salt Calculator Features</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Explore advanced features of our Salt Calculator App for precise measurements and health tracking">
-    <meta name="keywords" content="salt calculator, features, cooking, recipe, sodium, health">
-    <style>
-        :root {
-            --primary-color: #4CAF50;
-            --primary-dark: #45a049;
-            --light-bg: #f0f2f5;
-        }
-
-        .nav-tabs {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 8px 0;
-        }
-
-        .nav-tab {
-            display: inline-block;
-            padding: 15px 25px;
-            cursor: pointer;
-            color: #34495e;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .nav-tab.active {
-            background: #C8E6C9;
-            color: #1B5E20;
-        }
-
-        .nav-tab:not(.active):hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--light-bg);
-        }
-
-        .feature-container {
-            max-width: 800px;
-            margin: 80px auto 20px;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .feature-card {
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary-color);
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .feature-card h3 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-
-        .feature-card p {
-            color: #7f8c8d;
-            line-height: 1.6;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #f8f9fa;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salt Calculator Features</title>
+  <meta name="description" content="Explore the advanced features of our Salt Calculator App, designed to help you achieve perfect salt balance in your cooking." />
+  <meta name="keywords" content="salt calculator, features, cooking, recipe, sodium, health" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-    <div class="nav-tabs">
-        <a href="index.html" class="nav-tab">Salt Calculator</a>
-        <div class="nav-tab active">Salt Features</div>
-        <a href="sugar.html" class="nav-tab">Sugar Calculator</a>
-        <a href="sugar-features.html" class="nav-tab">Sugar Features</a>
-        <a href="privacy-policy.html" class="nav-tab">Privacy Policy</a>
-        <a href="terms-of-service.html" class="nav-tab">Terms of Service</a>
-        <a href="contact.html" class="nav-tab">Contact Us</a>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Salt & Sugar Calculator Logo" />
     </div>
-    
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html">Salt Calculator</a></li>
+        <li><a href="features.html" class="active">Salt Features</a></li>
+        <li><a href="sugar.html">Sugar Calculator</a></li>
+        <li><a href="sugar-features.html">Sugar Features</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
     <div class="feature-container">
-        <h1>Key Features of Our Salt Calculator</h1>
-        <div class="feature-card">
-            <h3>Precision Calculations</h3>
-            <p>Accurate salt measurements based on food weight with real-time conversion between grams, milliliters, and teaspoons.</p>
-            <h4>Why Precision Matters</h4>
-            <p>In cooking and food preservation, the right amount of salt can make a significant difference...</p>
-        </div>
-        <!-- Additional feature cards follow the same pattern -->
+      <h1>Key Features of Our Salt Calculator</h1>
+      <div class="feature-card">
+        <h3>Precision Calculations</h3>
+        <p>Accurate salt measurements based on food weight with real-time conversion between grams, milliliters, and teaspoons.</p>
+        <h4>Why Precision Matters</h4>
+        <p>In cooking and food preservation, the right amount of salt can make a significant difference. Too little can result in bland flavors or unsafe preservation; too much can be overpowering. Our calculator ensures a perfect balance every time.</p>
+        <h4>How It Works</h4>
+        <p>Our algorithm factors in your food’s weight and desired salt percentage then calculates the exact salt needed in grams – automatically converting to milliliters (for liquid salt) and teaspoons for easy measuring.</p>
+        <h4>Examples</h4>
+        <p>For a 500g piece of meat with a recommended salt percentage of 0.5% our calculator suggests:</p>
+          <p> › 2.65g of salt</p>
+          <p> › 3.18ml of liquid salt</p>
+          <p> › 0.64 teaspoons of salt</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Health Monitoring</h3>
+        <p>Automatic health recommendations based on WHO guidelines for daily sodium intake (5g salt/day).</p>
+        <h4>Understanding Sodium Intake</h4>
+        <p>The World Health Organization advises no more than 5g of salt per day. Our calculator provides real-time feedback to help you stay within safe limits.</p>
+        <h4>Health Tips</h4>
+        <p>If your salt usage is too high, you’ll receive warnings about potential health risks and suggestions to reduce salt in your diet.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Unit Conversion</h3>
+        <p>Seamless switching between metric (g/kg) and imperial (oz/lb) systems.</p>
+        <h4>How It Works</h4>
+        <p>Toggle between metric and imperial inputs – enter your food weight in grams or kilograms and see the equivalent in ounces or pounds instantly.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Salt Ratio Visualization</h3>
+        <p>Interactive donut chart that shows the proportion of salt in your food.</p>
+        <h4>Visual Feedback</h4>
+        <p>The chart offers a clear view of your salt usage relative to food weight, so you can quickly judge whether you’re using the right amount.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Calculation History</h3>
+        <p>Keep track of all previous measurements for future reference.</p>
+        <h4>Why It’s Useful</h4>
+        <p>Chefs and home cooks can easily repeat recipes using saved measurements, ensuring consistency in flavor and preservation.</p>
+      </div>
     </div>
-    
-    <footer>
-        <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms-of-service.html">Terms of Service</a> |
-        <a href="contact.html">Contact Us</a>
-    </footer>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a> |
+      <a href="terms-of-service.html">Terms of Service</a> |
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61567007470663" class="facebook"></a>
+      <a href="https://www.youtube.com/@saltcalculatorapp" class="youtube"></a>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
