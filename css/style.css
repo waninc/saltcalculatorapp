@@ -8,12 +8,10 @@ header {
 /* Set navigation menu link text to black */
 nav ul li a {
   color: #000000 !important;
-  fontsize: 8 pt;
 }
 nav ul li a:hover,
 nav ul li a:active {
   color: #d4af37 !important;
-    fontsize: 8 pt;
 }
 
 :root {
