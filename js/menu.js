@@ -1,47 +1,60 @@
-// ====== Animated Gradient Tab Menu Logic (Option 4) ======
-// This script slides the gradient indicator to the active tab, and sets 'active' based on the page.
-// Use with an animated gradient tab HTML/CSS structure.
+// ====== Burger Menu Logic for Desktop & Mobile ======
+// This script toggles the navigation menu via a burger icon for all screen sizes.
 
 document.addEventListener('DOMContentLoaded', function () {
-  const tabs = document.querySelectorAll('#gradient-tabs li');
-  const indicator = document.querySelector('#gradient-tabs .indicator');
-  const menuLinks = [
-    { file: 'index.html', tab: 0 },
-    { file: 'features.html', tab: 1 },
-    { file: 'sugar.html', tab: 2 },
-    { file: 'privacy-policy.html', tab: 3 },
-    { file: 'contact.html', tab: 4 }
-  ];
-  // Set active tab
-  let idx = 0;
-  if (window.location.pathname.includes('sugar-features.html')) {
-    idx = 2;
-  } else {
-    const path = window.location.pathname.split('/').pop();
-    menuLinks.forEach(link => {
-      if (link.file === path) idx = link.tab;
-    });
-  }
-  tabs.forEach(li => li.classList.remove('active'));
-  tabs[idx]?.classList.add('active');
-  function moveIndicator(idx) {
-    const tab = tabs[idx];
-    if (tab && indicator) {
-      indicator.style.width = tab.offsetWidth + "px";
-      indicator.style.left = tab.offsetLeft + "px";
-    }
-  }
-  moveIndicator(idx);
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', function () {
-      tabs.forEach(li => li.classList.remove('active'));
-      this.classList.add('active');
-      moveIndicator(i);
-    });
+  const burger = document.getElementById('burger-menu');
+  const nav = document.getElementById('main-nav');
+  const closeBtn = document.getElementById('close-menu'); // optional
+
+  // Open menu
+  burger.addEventListener('click', function () {
+    nav.classList.add('menu-open');
+    burger.setAttribute('aria-expanded', 'true');
+    // Optional: Hide burger when menu is open
+    burger.style.display = 'none';
+    if (closeBtn) closeBtn.style.display = 'block';
   });
-  window.addEventListener('resize', () => {
-    const idx = [...tabs].findIndex(li => li.classList.contains('active'));
-    moveIndicator(idx);
+
+  // Close menu (using close button if exists)
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.style.display = 'block';
+      closeBtn.style.display = 'none';
+    });
+  }
+
+  // Close menu when clicking outside the nav (optional, for UX)
+  document.addEventListener('click', function (e) {
+    if (
+      nav.classList.contains('menu-open') &&
+      !nav.contains(e.target) &&
+      e.target !== burger &&
+      (!closeBtn || e.target !== closeBtn)
+    ) {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.style.display = 'block';
+      if (closeBtn) closeBtn.style.display = 'none';
+    }
+  });
+
+  // Accessibility: Close with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('menu-open')) {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.style.display = 'block';
+      if (closeBtn) closeBtn.style.display = 'none';
+    }
+  });
+
+  // Ensure menu is reset on resize (if switching between mobile/desktop layouts)
+  window.addEventListener('resize', function () {
+    nav.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.style.display = 'block';
+    if (closeBtn) closeBtn.style.display = 'none';
   });
 });
-// ====== END Animated Gradient Tab Menu Logic ======
