@@ -1,94 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Salt Calculator App - Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salt Calculator App V4.10</title>
+  <meta name="description" content="Calculate the precise amount of salt needed for your recipes with our easy-to-use Salt Calculator App." />
+  <meta name="keywords" content="salt calculator, cooking, recipe, sodium, health" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
-  <!-- ======== BEGIN: Glassmorphism Tab Menu ======== -->
-  <nav class="glass-menu">
-    <div class="logo">SaltCalculator</div>
-    <ul>
-      <li class="active"><span class="icon">🏠</span> <a href="index.html">Home</a></li>
-      <li><span class="icon">🧂</span> <a href="features.html">Features</a></li>
-      <li><span class="icon">🍬</span> <a href="sugar.html">Sugar</a></li>
-      <li><span class="icon">ℹ️</span> <a href="privacy-policy.html">Privacy</a></li>
-      <li><span class="icon">💬</span> <a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <style>
-    body { background: linear-gradient(120deg, #ece9e6, #ffffff 85%); min-height:100vh;}
-    .glass-menu {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 48px;
-      margin: 40px auto 0 auto;
-      max-width: 1000px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.15);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-    .glass-menu .logo {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #27446c;
-      letter-spacing: 1px;
-      margin-right: 28px;
-    }
-    .glass-menu ul {
-      display: flex;
-      gap: 18px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .glass-menu ul li {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 1.08rem;
-      color: #1a2634;
-      padding: 8px 20px 8px 14px;
-      border-radius: 14px;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-    }
-    .glass-menu ul li.active,
-    .glass-menu ul li:hover,
-    .glass-menu ul li:focus {
-      background: rgba(255,255,255,0.70);
-      color: #243f6c;
-      box-shadow: 0 2px 10px rgba(31, 38, 135, 0.07);
-      outline: none;
-    }
-    .glass-menu ul li .icon {
-      font-size: 1.2em;
-    }
-    .glass-menu ul li a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .glass-menu ul li a:focus {
-      outline: none;
-    }
-    @media (max-width: 700px) {
-      .glass-menu { flex-direction: column; padding: 16px; }
-      .glass-menu ul { flex-wrap: wrap; gap: 8px; }
-    }
-  </style>
-  <!-- ======== END: Glassmorphism Tab Menu ======== -->
+  <header>
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Salt & Sugar Calculator Logo" />
+    </div>
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html" class="active">Salt Calculator</a></li>
+        <li><a href="features.html">Salt Features</a></li>
+        <li><a href="sugar.html">Sugar Calculator</a></li>
+        <li><a href="sugar-features.html">Sugar Features</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
-    <h1>Welcome to Salt Calculator App</h1>
-    <!-- Your homepage content here -->
+    <div class="progress-container"></div>
+
+    <div class="container">
+      <h1>Salt Calculator App</h1>
+      <div class="input-container">
+        <label for="weight">ENTER FOOD WEIGHT (g/kg)</label>
+        <input type="text" id="weight" placeholder="e.g., 500g or 1kg" />
+      </div>
+      <div class="input-container">
+        <label for="salt">CALCULATED SALT AMOUNT</label>
+        <input type="text" id="salt" readonly />
+      </div>
+      <div class="button-container">
+        <button onclick="calculateSalt()">Calculate</button>
+        <button onclick="resetFields()">Reset</button>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Salt Ratio Visualization</h3>
+          <div class="donut-chart">
+            <div class="chart-center">
+              <span id="chart-percent">0%</span>
+              <div id="chart-tsp">0 tsp</div>
+            </div>
+          </div>
+          <p>Visualize the salt ratio in your food with this interactive donut chart.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Calculation History</h3>
+          <div class="history-list" id="historyList"></div>
+          <p>Keep track of your previous calculations for reference.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Unit Converter</h3>
+          <div class="unit-toggle">
+            <span>Metric (g/kg)</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="unitToggle" />
+              <span class="toggle-slider"></span>
+            </label>
+            <span>Imperial (oz/lb)</span>
+          </div>
+          <div id="convertedUnits"></div>
+          <p>Easily switch between metric and imperial units for your convenience.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Health Recommendations</h3>
+          <div id="healthTips"></div>
+          <p>Get instant health tips based on your salt usage.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Salt Adjustment</h3>
+          <label>Salt Percentage:
+            <input type="number" id="saltPercent" value="0.53" step="0.1" min="0.1" max="5" />%
+          </label>
+          <div id="adjustedValues"></div>
+          <p>Customize the salt percentage for your specific needs.</p>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Health Note:</strong> Recommended daily salt intake is 5 grams. Individual needs may vary – consult a nutritionist for personalized advice.<br />
+        © 2025 OB MOONO.
+      </div>
+    </div>
   </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a> |
+      <a href="terms-of-service.html">Terms of Service</a> |
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61567007470663" class="facebook"></a>
+      <a href="https://www.youtube.com/@saltcalculatorapp" class="youtube"></a>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
