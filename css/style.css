@@ -5,7 +5,16 @@
 
 /* Header background color change */
 header {
-  background-color: #d4af37   !important;
+  background-color: #d4af37 !important;
+}
+
+/* Set navigation menu link text to black */
+nav ul li a {
+  color: #000000 !important;
+}
+nav ul li a:hover,
+nav ul li a:active {
+  color: #d4af37 !important;
 }
 
 :root {
