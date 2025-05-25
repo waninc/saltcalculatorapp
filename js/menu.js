@@ -1,8 +1,10 @@
-// ====== Minimalist Mega Menu Logic (Option 3) ======
-// This script highlights the active tab and handles mega menu open/close on desktop.
-// Use with a minimalist/mega menu HTML/CSS structure.
+// ====== Animated Gradient Tab Menu Logic (Option 4) ======
+// This script slides the gradient indicator to the active tab, and sets 'active' based on the page.
+// Use with an animated gradient tab HTML/CSS structure.
 
 document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('#gradient-tabs li');
+  const indicator = document.querySelector('#gradient-tabs .indicator');
   const menuLinks = [
     { file: 'index.html', tab: 0 },
     { file: 'features.html', tab: 1 },
@@ -10,36 +12,36 @@ document.addEventListener('DOMContentLoaded', function () {
     { file: 'privacy-policy.html', tab: 3 },
     { file: 'contact.html', tab: 4 }
   ];
+  // Set active tab
+  let idx = 0;
   if (window.location.pathname.includes('sugar-features.html')) {
-    document.querySelectorAll('.minimal-menu ul li').forEach(li => li.classList.remove('active'));
-    document.querySelectorAll('.minimal-menu ul li')[2]?.classList.add('active');
+    idx = 2;
   } else {
     const path = window.location.pathname.split('/').pop();
     menuLinks.forEach(link => {
-      if (link.file === path) {
-        document.querySelectorAll('.minimal-menu ul li').forEach(li => li.classList.remove('active'));
-        document.querySelectorAll('.minimal-menu ul li')[link.tab]?.classList.add('active');
-      }
+      if (link.file === path) idx = link.tab;
     });
   }
-  // Mega menu hover/focus handler
-  document.querySelectorAll('.minimal-menu ul li.has-mega').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      const mega = item.querySelector('.mega-menu');
-      if (mega) mega.style.display = 'flex';
-    });
-    item.addEventListener('mouseleave', () => {
-      const mega = item.querySelector('.mega-menu');
-      if (mega) mega.style.display = 'none';
-    });
-    item.addEventListener('focusin', () => {
-      const mega = item.querySelector('.mega-menu');
-      if (mega) mega.style.display = 'flex';
-    });
-    item.addEventListener('focusout', () => {
-      const mega = item.querySelector('.mega-menu');
-      if (mega) mega.style.display = 'none';
+  tabs.forEach(li => li.classList.remove('active'));
+  tabs[idx]?.classList.add('active');
+  function moveIndicator(idx) {
+    const tab = tabs[idx];
+    if (tab && indicator) {
+      indicator.style.width = tab.offsetWidth + "px";
+      indicator.style.left = tab.offsetLeft + "px";
+    }
+  }
+  moveIndicator(idx);
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', function () {
+      tabs.forEach(li => li.classList.remove('active'));
+      this.classList.add('active');
+      moveIndicator(i);
     });
   });
+  window.addEventListener('resize', () => {
+    const idx = [...tabs].findIndex(li => li.classList.contains('active'));
+    moveIndicator(idx);
+  });
 });
-// ====== END Minimalist Mega Menu Logic ======
+// ====== END Animated Gradient Tab Menu Logic ======
