@@ -49,8 +49,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--shadow-color)
-  box-shadow: 0 2px 10px var(--shadow-color);
+  background-color: #000000
+  box-shadow: 0 2px 10px var(#000000);
   display: flex;
   justify-content: space-between;
   align-items: center;
