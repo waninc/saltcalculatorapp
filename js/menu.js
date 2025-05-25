@@ -49,12 +49,4 @@ document.addEventListener('DOMContentLoaded', function () {
       if (closeBtn) closeBtn.style.display = 'none';
     }
   });
-
-  // Ensure menu is reset on resize (if switching between mobile/desktop layouts)
-  window.addEventListener('resize', function () {
-    nav.classList.remove('menu-open');
-    burger.setAttribute('aria-expanded', 'false');
-    burger.style.display = 'block';
-    if (closeBtn) closeBtn.style.display = 'none';
-  });
 });
