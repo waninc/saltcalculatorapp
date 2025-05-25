@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <meta charset="UTF-8">
+  <title>Salt Calculator App - Terms of Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/logo.jpg" alt="Salt & Sugar Calculator Logo" />
-    </div>
-    <div class="hamburger-menu" id="hamburgerMenu">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <nav class="mobile-menu" id="mobileMenu">
-      <ul>
-        <li><a href="index.html">Salt Calculator</a></li>
-        <li><a href="features.html">Salt Features</a></li>
-        <li><a href="sugar.html">Sugar Calculator</a></li>
-        <li><a href="sugar-features.html">Sugar Features</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-service.html" class="active">Terms of Service</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="glass-menu">
+    <div class="logo">SaltCalculator</div>
+    <ul>
+      <li><span class="icon">🏠</span> <a href="index.html">Home</a></li>
+      <li><span class="icon">🧂</span> <a href="features.html">Features</a></li>
+      <li><span class="icon">🍬</span> <a href="sugar.html">Sugar</a></li>
+      <li><span class="icon">ℹ️</span> <a href="privacy-policy.html">Privacy</a></li>
+      <li><span class="icon">💬</span> <a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <style>
+    body { background: linear-gradient(120deg, #ece9e6, #ffffff 85%); min-height:100vh;}
+    .glass-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      margin: 40px auto 0 auto;
+      max-width: 1000px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.15);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-menu .logo {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #27446c;
+      letter-spacing: 1px;
+      margin-right: 28px;
+    }
+    .glass-menu ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .glass-menu ul li {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 1.08rem;
+      color: #1a2634;
+      padding: 8px 20px 8px 14px;
+      border-radius: 14px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+    .glass-menu ul li.active,
+    .glass-menu ul li:hover,
+    .glass-menu ul li:focus {
+      background: rgba(255,255,255,0.70);
+      color: #243f6c;
+      box-shadow: 0 2px 10px rgba(31, 38, 135, 0.07);
+      outline: none;
+    }
+    .glass-menu ul li .icon {
+      font-size: 1.2em;
+    }
+    .glass-menu ul li a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .glass-menu ul li a:focus {
+      outline: none;
+    }
+    @media (max-width: 700px) {
+      .glass-menu { flex-direction: column; padding: 16px; }
+      .glass-menu ul { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
 
   <main>
-    <div class="terms-container">
-      <h2>Terms of Service</h2>
-      <p>Last updated: April 11, 2025</p>
-      <p>Welcome to OB MOONO's Salt and Sugar Calculator applications. By accessing or using our applications, you agree to be bound by these Terms of Service. If you do not agree, please do not use our applications.</p>
-      <h2>1. Acceptance of Terms</h2>
-      <p>By using our applications, you acknowledge that you have read, understood, and agreed to these Terms of Service. This agreement is legally binding between you and OB MOONO.</p>
-      <h2>2. Use of the Applications</h2>
-      <p>You may use the applications for personal, non‑commercial purposes only. You may not:</p>
-        <p> › Copy, modify, or distribute the applications or any of their content</p>
-        <p> › Use the applications for commercial purposes without written consent</p>
-        <p> › Reverse engineer or decompile the applications</p>
-        <p> › Use the applications in any unlawful manner</p>
-      <h2>3. Accuracy of Information</h2>
-      <p>While we strive for accuracy, we cannot guarantee that the results will be error‑free or meet all requirements. Use the applications at your own risk.</p>
-      <h2>4. Disclaimer of Warranties</h2>
-      <p>The applications are provided “as is” without warranty of any kind, either express or implied, and we do not guarantee error‑free operation.</p>
-      <h2>5. Limitation of Liability</h2>
-      <p>OB MOONO shall not be liable for any damages arising out of or relating to the use or inability to use the applications.</p>
-      <h2>6. Indemnification</h2>
-      <p>You agree to indemnify and hold OB MOONO harmless from any claims or damages arising from your use of our applications.</p>
-      <h2>7. Modifications to Terms</h2>
-      <p>We reserve the right to modify these Terms of Service at any time. Changes will be posted here, and your continued use constitutes acceptance of the revised terms.</p>
-      <h2>8. Governing Law</h2>
-      <p>These Terms of Service are governed by the laws of the jurisdiction in which OB MOONO operates.</p>
-      <h2>9. Contact Information</h2>
-      <p>For any questions, please visit our Contact Us page.</p>
-    </div>
+    <h1>Terms of Service</h1>
+    <!-- Terms of Service content here -->
   </main>
-
-  <footer>
-    <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a> |
-      <a href="terms-of-service.html">Terms of Service</a> |
-      <a href="contact.html">Contact Us</a>
-    </div>
-    <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=61567007470663" class="facebook"></a>
-      <a href="https://www.youtube.com/@saltcalculatorapp" class="youtube"></a>
-    </div>
-  </footer>
-
-  <script src="js/menu.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
