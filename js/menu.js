@@ -1,6 +1,6 @@
-// ====== Neumorphism Tab Menu Logic (Option 2) ======
-// This script highlights the active page/tab for a soft 3D "neumorphic" look menu.
-// Use with a corresponding neumorphism CSS menu and the same menu items/order.
+// ====== Minimalist Mega Menu Logic (Option 3) ======
+// This script highlights the active tab and handles mega menu open/close on desktop.
+// Use with a minimalist/mega menu HTML/CSS structure.
 
 document.addEventListener('DOMContentLoaded', function () {
   const menuLinks = [
@@ -10,24 +10,36 @@ document.addEventListener('DOMContentLoaded', function () {
     { file: 'privacy-policy.html', tab: 3 },
     { file: 'contact.html', tab: 4 }
   ];
-  // Special case for sugar-features.html
   if (window.location.pathname.includes('sugar-features.html')) {
-    document.querySelectorAll('.neumorph-menu ul li').forEach(li => li.classList.remove('active'));
-    document.querySelectorAll('.neumorph-menu ul li')[2]?.classList.add('active');
+    document.querySelectorAll('.minimal-menu ul li').forEach(li => li.classList.remove('active'));
+    document.querySelectorAll('.minimal-menu ul li')[2]?.classList.add('active');
   } else {
     const path = window.location.pathname.split('/').pop();
     menuLinks.forEach(link => {
       if (link.file === path) {
-        document.querySelectorAll('.neumorph-menu ul li').forEach(li => li.classList.remove('active'));
-        document.querySelectorAll('.neumorph-menu ul li')[link.tab]?.classList.add('active');
+        document.querySelectorAll('.minimal-menu ul li').forEach(li => li.classList.remove('active'));
+        document.querySelectorAll('.minimal-menu ul li')[link.tab]?.classList.add('active');
       }
     });
   }
-  // Enable keyboard nav
-  document.querySelectorAll('.neumorph-menu ul li a').forEach(link => {
-    link.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') this.click();
+  // Mega menu hover/focus handler
+  document.querySelectorAll('.minimal-menu ul li.has-mega').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const mega = item.querySelector('.mega-menu');
+      if (mega) mega.style.display = 'flex';
+    });
+    item.addEventListener('mouseleave', () => {
+      const mega = item.querySelector('.mega-menu');
+      if (mega) mega.style.display = 'none';
+    });
+    item.addEventListener('focusin', () => {
+      const mega = item.querySelector('.mega-menu');
+      if (mega) mega.style.display = 'flex';
+    });
+    item.addEventListener('focusout', () => {
+      const mega = item.querySelector('.mega-menu');
+      if (mega) mega.style.display = 'none';
     });
   });
 });
-// ====== END Neumorphism Tab Menu Logic ======
+// ====== END Minimalist Mega Menu Logic ======
