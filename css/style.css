@@ -3,6 +3,11 @@
 /* Import sans-serif font: Montserrat for all text */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+/* Header background color change */
+header {
+  background-color: #d4af37 !important;
+}
+
 :root {
   --primary-color: #d4af37;      /* Regal Gold */
   --primary-dark: #b8902c;       /* Darker Gold for hover */
