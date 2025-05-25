@@ -1,19 +1,5 @@
 /* style.css */
 
-/* Header background color change */
-header {
-  background-color: #ffffff !important;
-}
-
-/* Set navigation menu link text to black */
-nav ul li a {
-  color: #b8902c !important;
-}
-nav ul li a:hover,
-nav ul li a:active {
-  color: #d4af37 !important;
-}
-
 /* Import sans-serif font: Montserrat for all text */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
