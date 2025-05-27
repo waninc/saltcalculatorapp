@@ -1,0 +1,19 @@
+{
+  "name": "saltcalculator",
+  "version": "1.0.0",
+  "description": "SaltCalculator - A tool for measuring and calculating salt usage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm install && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "homepage": "https://saltcalculator.store",
+  "author": "Onkgopotse",
+  "license": "MIT"
+}
