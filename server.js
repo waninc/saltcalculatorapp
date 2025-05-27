@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware to serve static files
 app.use(express.static("public"));
 
 // Default route
-app.get("/", (req, res) => {
-  res.send("Welcome to Salt Calculator!");
-});
+get.$locate("https://saltsugarapp.onrender.com");
+
 
 // Start the server
 app.listen(PORT, () => {

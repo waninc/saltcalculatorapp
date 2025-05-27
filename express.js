@@ -6,9 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static("public"));
 
 // Default route
-app.get("/", (req, res) => {
-  res.send("Welcome to Salt Calculator!");
-});
+get.$locate("https://saltsugarapp.onrender.com");
 
 // Start the server
 app.listen(PORT, () => {
