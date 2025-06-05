@@ -13,6 +13,7 @@
             --primary-color: #4caf50;
             --primary-dark: #45a049;
             --light-bg: #f0f2f5;
+            --green-bg: #c8e6c9;
         }
         .nav-tabs {
             position: fixed;
@@ -64,6 +65,9 @@
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s ease;
+        }
+        #saltMl {
+            background: var(--green-bg);
         }
         .button-container {
             display: grid;
@@ -277,7 +281,7 @@
 
                 const result = calculateSaltPercent(weightInput, saltMl);
                 document.getElementById("saltPercentResult").value =
-                    `${result.percent.toFixed(3)}% | ${result.saltGrams.toFixed(2)} g salt | ${result.tsp.toFixed(2)} tsp`;
+                    `${result.percent.toFixed(3)}% | ${result.saltMl.toFixed(2)} ml salt | ${result.tsp.toFixed(2)} tsp`;
 
                 updateChart(result.percent, result.tsp);
                 saveToHistory(result);
@@ -309,15 +313,13 @@
                     }
                 }
 
-                // Salt: ml to grams
-                const saltGrams = saltMl / 1.2;
-                const percent = (saltGrams / numericWeight) * 100;
+                // Calculation: salt percent = (salt_ml / food_grams) * 100
+                const percent = (saltMl / numericWeight) * 100;
                 const tsp = saltMl / 5;
 
                 return {
                     percent: percent,
-                    saltGrams: saltGrams,
-                    ml: saltMl,
+                    saltMl: saltMl,
                     tsp: tsp,
                     weight: numericWeight
                 };
@@ -359,7 +361,7 @@
                 entry.className = "history-entry";
                 entry.innerHTML = `
                     <strong>${new Date().toLocaleTimeString()}:</strong>
-                    ${data.weight.toFixed(2)}g → ${data.saltGrams.toFixed(2)}g salt (${data.percent.toFixed(3)}%)
+                    ${data.weight.toFixed(2)}g → ${data.saltMl.toFixed(2)}ml salt (${data.percent.toFixed(3)}%)
                 `;
                 if (historyList.children.length >= 5) {
                     historyList.lastChild.remove();
