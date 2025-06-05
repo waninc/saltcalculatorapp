@@ -187,8 +187,8 @@
             <input type="text" id="weight" placeholder="e.g., 500g or 1kg" />
         </div>
         <div class="input-container">
-            <label>ENTER SALT AMOUNT (ml)</label>
-            <input type="number" id="saltMl" placeholder="e.g., 2.5" min="0" step="0.01" />
+            <label>SALT AMOUNT (ml)</label>
+            <input type="number" id="saltMl" placeholder="e.g., 2.5" min="0" step="0.01" value="2.5" />
         </div>
         <div class="input-container">
             <label>CALCULATED SALT PERCENTAGE</label>
@@ -271,7 +271,7 @@
                     return;
                 }
                 if (isNaN(saltMl) || saltMl <= 0) {
-                    alert("Enter total salt amount in ml (greater than 0)");
+                    alert("Salt amount must be greater than 0");
                     return;
                 }
 
@@ -281,7 +281,6 @@
 
                 updateChart(result.percent, result.tsp);
                 saveToHistory(result);
-                updateConvertedUnits(result);
                 showHealthTips(result.percent);
                 addProgressBar(result.percent, result.tsp);
             }
@@ -389,7 +388,7 @@
 
             function resetFields() {
                 document.getElementById("weight").value = "";
-                document.getElementById("saltMl").value = "";
+                document.getElementById("saltMl").value = "2.5";
                 document.getElementById("saltPercentResult").value = "";
                 let progress = document.querySelector(".progress-container");
                 if(progress) progress.innerHTML = "";
