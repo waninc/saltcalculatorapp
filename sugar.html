@@ -11,8 +11,6 @@
             padding: 0;
             background: #f0f2f5;
         }
-
-        /* Navigation Tabs */
         .nav-tabs {
             position: fixed;
             top: 0;
@@ -22,7 +20,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 0 0 8px 0;
         }
-
         .nav-tab {
             display: inline-block;
             padding: 15px 25px;
@@ -32,18 +29,14 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-
         .nav-tab.active {
             background: #0D47A1;
             color: white;
         }
-
         .nav-tab:not(.active):hover {
             background: #1976D2;
             color: white;
         }
-
-        /* Main Container */
         .container {
             max-width: 600px;
             margin: 100px auto 20px;
@@ -52,8 +45,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-/*ComeBack*/
-        /* Toggle Switch */
         .ingredient-toggle {
             position: relative;
             display: flex;
@@ -62,7 +53,6 @@
             margin: 15px 0;
             overflow: hidden;
         }
-
         .ingredient-slider {
             position: absolute;
             height: 100%;
@@ -71,7 +61,6 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 0;
         }
-
         .ingredient-type {
             position: relative;
             flex: 1;
@@ -85,16 +74,12 @@
             background: transparent;
             border: none;
         }
-
         .ingredient-type.active {
             color: white;
         }
-
-        /* Input Styles */
         .input-container {
             margin-bottom: 20px;
         }
-
         input[type="text"], select, input[type="number"] {
             width: 100%;
             padding: 12px 15px;
@@ -104,15 +89,12 @@
             transition: border-color 0.3s ease;
             box-sizing: border-box;
         }
-
-        /* Button Styles */
         .button-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 25px;
         }
-
         button {
             padding: 12px;
             border: none;
@@ -123,23 +105,18 @@
             background: #2196F3;
             color: white;
         }
-
         button:hover {
             background: #1976D2;
         }
-
-        /* Results Section */
         .sweetener-table {
             margin-top: 20px;
             border-collapse: collapse;
             width: 100%;
         }
-
         .sweetener-table td {
             padding: 12px;
             border-bottom: 1px solid #ddd;
         }
-
         .progress-container {
             margin: 20px 0;
             background: white;
@@ -147,7 +124,6 @@
             padding: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
         .progress-bar {
             height: 30px;
             background: #f0f0f0;
@@ -156,13 +132,11 @@
             position: relative;
             overflow: hidden;
         }
-
         .progress-fill {
             height: 100%;
             background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
             transition: width 0.5s ease-in-out;
         }
-
         .disclaimer {
             margin-top: 25px;
             padding: 15px;
@@ -171,69 +145,57 @@
             font-size: 0.9em;
             color: #666;
         }
-    
-    /* Add to your existing CSS */
-.unit-toggle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 28px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:checked + .slider:before {
-    transform: translateX(22px);
-}
-    
+        .unit-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
     </style>
-        <meta name="description" content="Wan Records - Precision salt and sugar calculators for health-conscious individuals. Calculate, track, and optimize your daily intake with advanced features and real-time recommendations.">
-<meta name="keywords" content="salt calculator, sugar calculator, health tracking, nutrition, Wan Records, food preservation, recipe optimization">
-<meta name="author" content="Wan Records">
-<meta name="robots" content="index, follow"> <!-- Allow search engines to index the site --> 
-
+    <meta name="description" content="Wan Records - Precision salt and sugar calculators for health-conscious individuals. Calculate, track, and optimize your daily intake with advanced features and recommendations.">
+    <meta name="keywords" content="salt calculator, sugar calculator, health tracking, nutrition, Wan Records, food preservation, recipe optimization">
+    <meta name="author" content="Wan Records">
+    <meta name="robots" content="index, follow">
 </head>
-
-    
 <body>
     <!-- Navigation -->
     <div class="nav-tabs">
@@ -246,26 +208,23 @@ input:checked + .slider:before {
         <!-- Toggle Switch -->
         <div class="ingredient-toggle" id="ingredientToggle">
             <div class="ingredient-slider" id="ingredientSlider"></div>
-            <button class="ingredient-type active" onclick="toggleIngredientType('solid')">Solid Ingredients</button>
-            <button class="ingredient-type" onclick="toggleIngredientType('liquid')">Beverages</button>
+            <button class="ingredient-type active" onclick="toggleIngredientType('solid', event)">Solid Ingredients</button>
+            <button class="ingredient-type" onclick="toggleIngredientType('liquid', event)">Beverages</button>
         </div>
-        
-        <!-- Add this right after the slide toggles section -->
-<div class="unit-toggle">
-    <span>Metric</span>
-    <label class="switch">
-        <input type="checkbox" id="unitToggle">
-        <span class="slider"></span>
-    </label>
-    <span>Imperial</span>
-</div>
-
+        <!-- Unit Toggle -->
+        <div class="unit-toggle">
+            <span>Metric</span>
+            <label class="switch">
+                <input type="checkbox" id="unitToggle">
+                <span class="slider"></span>
+            </label>
+            <span>Imperial</span>
+        </div>
         <!-- Input Section -->
         <div class="input-container">
             <label id="weightLabel" for="weight">ENTER INGREDIENT WEIGHT (g/kg)</label>
             <input type="text" id="weight" placeholder="e.g., 500g or 1kg">
         </div>
-
         <div class="input-container">
             <label>Sugar Type:
                 <select id="sugarType">
@@ -275,33 +234,27 @@ input:checked + .slider:before {
                 </select>
             </label>
         </div>
-
         <div class="input-container">
             <label>Sugar Percentage:
-                <input type="number" id="sugarPercent" value="2.1" step="0.5" min="1" max="25">%
+                <input type="number" id="sugarPercent" value="2.1" step="0.01" min="1" max="25">%
             </label>
         </div>
-
         <div class="input-container">
             <label>Recipe Scale:
                 <input type="number" id="recipeScale" value="1" min="0.25" max="10" step="0.25">x
             </label>
         </div>
-
         <!-- Output Section -->
         <div class="input-container">
             <label for="sugar">CALCULATED SUGAR AMOUNT</label>
             <input type="text" id="sugar" readonly>
         </div>
-
         <div class="button-container">
             <button onclick="calculateSugar()">Calculate</button>
             <button onclick="resetFields()">Reset</button>
         </div>
-
         <!-- Results Section -->
         <div class="progress-container" id="progressContainer"></div>
-
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Natural Sweetener Equivalents</h3>
@@ -312,12 +265,11 @@ input:checked + .slider:before {
             <strong>Health Note:</strong> WHO recommends less than 25g added sugar daily.<br>
             © 2025 WAN RECORDS.
             <div class="container">
-              <script async="async"  data-cfasync="false" src="//pl26808952.profitableratecpm.com/a39616a2da92be3fd7ae45f1b85a8809/invoke.js"></script>
-<div id="container-a39616a2da92be3fd7ae45f1b85a8809"></div>
+                <script async="async"  data-cfasync="false" src="//pl26808952.profitableratecpm.com/a39616a2da92be3fd7ae45f1b85a8809/invoke.js"></script>
+                <div id="container-a39616a2da92be3fd7ae45f1b85a8809"></div>
+            </div>
         </div>
-
     </div>
-
 <script>
     // State Management
     let currentIngredientType = 'solid';
@@ -332,9 +284,8 @@ input:checked + .slider:before {
         'Syrup': 1.492
     };
 
-    // Calculation Functions
     function calculateSugar() {
-        const weightInput = document.getElementById("weight").value;
+        const weightInput = document.getElementById("weight").value.trim();
         const sugarPercentage = parseFloat(document.getElementById("sugarPercent").value);
         const sugarType = parseFloat(document.getElementById("sugarType").value);
         const scale = parseFloat(document.getElementById("recipeScale").value);
@@ -348,12 +299,12 @@ input:checked + .slider:before {
     }
 
     function validateInput(weight) {
-        const pattern = currentIngredientType === 'liquid' 
-            ? (currentUnit === 'metric' 
-                ? /^[0-9]+(\.[0-9]+)?\s*(ml|l)$/i 
+        const pattern = currentIngredientType === 'liquid'
+            ? (currentUnit === 'metric'
+                ? /^[0-9]+(\.[0-9]+)?\s*(ml|l)$/i
                 : /^[0-9]+(\.[0-9]+)?\s*(oz|pt)$/i)
-            : (currentUnit === 'metric' 
-                ? /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i 
+            : (currentUnit === 'metric'
+                ? /^[0-9]+(\.[0-9]+)?\s*(g|kg)$/i
                 : /^[0-9]+(\.[0-9]+)?\s*(oz|lb)$/i);
         return pattern.test(weight);
     }
@@ -361,8 +312,8 @@ input:checked + .slider:before {
     function calculateSugarAmount(input, percentage, gramsPerTsp, scale) {
         const numericValue = parseFloat(input);
         const unit = input.toLowerCase().match(/[a-z]+$/)[0];
-        
         let grams = numericValue;
+
         if (currentIngredientType === 'liquid') {
             if (currentUnit === 'metric') {
                 grams = unit === 'l' ? numericValue * 1000 : numericValue;
@@ -384,11 +335,9 @@ input:checked + .slider:before {
         return { grams: sugarGrams, tsp: tsp, cups: cups, percentage: percentage };
     }
 
-    // UI Functions
     function updateUI(data) {
-        document.getElementById("sugar").value = 
+        document.getElementById("sugar").value =
             `${data.grams.toFixed(2)}g | ${data.tsp.toFixed(2)} tsp | ${data.cups.toFixed(2)} cups`;
-        
         updateSweetenerTable(data.grams);
         addProgressBar(data.percentage, data.tsp);
     }
@@ -411,37 +360,34 @@ input:checked + .slider:before {
         const bar = document.createElement('div');
         bar.className = 'progress-bar';
         bar.innerHTML = `
-            <div class="progress-fill" style="width: ${percent}%">
-                <div class="progress-text">${percent.toFixed(1)}% (${tsp.toFixed(2)} tsp)</div>
+            <div class="progress-fill" style="width: ${Math.min(percent, 100)}%">
+                <div class="progress-text">${percent.toFixed(2)}% (${tsp.toFixed(2)} tsp)</div>
             </div>
         `;
         container.prepend(bar);
     }
 
-    // Toggle Functions
-    function toggleIngredientType(type) {
+    function toggleIngredientType(type, event) {
         currentIngredientType = type;
         const buttons = document.querySelectorAll('.ingredient-type');
         const slider = document.getElementById('ingredientSlider');
-        
+
         buttons.forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
-        
+
         const activeIndex = Array.from(buttons).indexOf(event.target);
         slider.style.transform = `translateX(${activeIndex * 100}%)`;
-        
+
         // Update input labels and placeholders
         const label = document.getElementById('weightLabel');
         const input = document.getElementById('weight');
         if (type === 'liquid') {
             label.textContent = 'ENTER LIQUID VOLUME (ml/l)';
-            input.placeholder = currentUnit === 'metric' ? 'e.g., 500ml or 2l' : 'e.g., 16oz or 2pt';
+            input.placeholder = currentUnit === 'metric' ? 'e.g., 500ml or 2l' : 'e.g., 17oz or 2pt';
         } else {
             label.textContent = 'ENTER INGREDIENT WEIGHT (g/kg)';
             input.placeholder = currentUnit === 'metric' ? 'e.g., 500g or 1kg' : 'e.g., 16oz or 2lb';
         }
-        
-        // Reset input fields
         resetFields();
     }
 
@@ -450,33 +396,80 @@ input:checked + .slider:before {
         document.getElementById("sugar").value = '';
         document.getElementById('progressContainer').innerHTML = "";
         document.getElementById('sweetenerTable').innerHTML = "";
+        document.getElementById('sugarPercent').value = currentIngredientType === 'liquid' ? 2.1 : 2.1;
     }
 
-    // Initialize slider
+    // Initialize slider and attach listeners
     window.addEventListener('DOMContentLoaded', () => {
         const slider = document.getElementById('ingredientSlider');
         slider.style.width = '50%';
+
+        document.getElementById('weight').addEventListener('input', autoSetSugarPercent);
+        document.getElementById('unitToggle').addEventListener('change', function () {
+            currentUnit = this.checked ? 'imperial' : 'metric';
+            const input = document.getElementById('weight');
+            if (currentIngredientType === 'solid') {
+                input.placeholder = currentUnit === 'metric'
+                    ? 'e.g., 500g or 1kg'
+                    : 'e.g., 16oz or 2lb';
+            } else {
+                input.placeholder = currentUnit === 'metric'
+                    ? 'e.g., 500ml or 2l'
+                    : 'e.g., 17oz or 2pt';
+            }
+            autoSetSugarPercent();
+        });
     });
 
-    // Unit Toggle Event Listener
-    document.getElementById('unitToggle').addEventListener('change', function() {
-        currentUnit = this.checked ? 'imperial' : 'metric';
-        const input = document.getElementById('weight');
-        
-        if (currentIngredientType === 'solid') {
-            input.placeholder = currentUnit === 'metric' 
-                ? 'e.g., 500g or 1kg' 
-                : 'e.g., 16oz or 2lb';
-        } else {
-            input.placeholder = currentUnit === 'metric' 
-                ? 'e.g., 500ml or 2l' 
-                : 'e.g., 16oz or 2pt';
+    // Helper: Compare input value to target, allowing for small floating point errors
+    function approxEqual(a, b, epsilon = 0.05) {
+        return Math.abs(a - b) < epsilon;
+    }
+
+    // Auto-adjust sugar percent for special values in both metric and imperial units
+    function autoSetSugarPercent() {
+        const input = document.getElementById('weight').value.trim().toLowerCase();
+        const sugarPercentInput = document.getElementById('sugarPercent');
+
+        // Extract numeric value and unit
+        const match = input.match(/^([0-9]+(\.[0-9]+)?)\s*(ml|l|g|kg|oz|lb|pt)$/i);
+        if (!match) return;
+
+        const value = parseFloat(match[1]);
+        const unit = match[3];
+
+        // Liquids
+        if (currentIngredientType === 'liquid') {
+            if (currentUnit === 'metric') {
+                if (
+                    (unit === 'ml' && approxEqual(value, 500)) ||
+                    (unit === 'l' && approxEqual(value, 0.5))
+                ) sugarPercentInput.value = 2.1;
+            } else { // imperial
+                // 500ml = ~16.91oz, ~1.06pt
+                if (
+                    (unit === 'oz' && approxEqual(value, 16.91)) ||
+                    (unit === 'pt' && approxEqual(value, 1.06))
+                ) sugarPercentInput.value = 2.1;
+            }
         }
-    });
-</script>
-    
 
-   </div>
-     
+        // Solids
+        if (currentIngredientType === 'solid') {
+            if (currentUnit === 'metric') {
+                if (
+                    (unit === 'g' && approxEqual(value, 1145)) ||
+                    (unit === 'kg' && approxEqual(value, 1.145))
+                ) sugarPercentInput.value = 21.83;
+            } else { // imperial
+                // 1145g = ~40.39oz, ~2.52lb
+                if (
+                    (unit === 'oz' && approxEqual(value, 40.39)) ||
+                    (unit === 'lb' && approxEqual(value, 2.52))
+                ) sugarPercentInput.value = 21.83;
+            }
+        }
+    }
+</script>
 </body>
-            </html>
+</html>
